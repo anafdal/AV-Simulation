@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Car
   - Stop
+  - Stoplight
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Stop
   - Car
   - Sidelines
-  - 
+  - Stoplight
   - 
   - 
   - 

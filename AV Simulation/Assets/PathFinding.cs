@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class PathFinding : MonoBehaviour
 {//script in car(..)
-
+//modified from
 
     public Transform[] points;//points you will use to move
     public NavMeshAgent agent;
@@ -30,8 +30,16 @@ public class PathFinding : MonoBehaviour
 
         if (!agent.pathPending && agent.remainingDistance < 0.5)//follow path
         {
+
+            if (points[destPoint].gameObject.name == "Waypoint (1)")
+            {
+                
+                        agent.Warp(points[destPoint].position);//warp the agent at waypoint(1) immediately
+                                    
+            }
+
             GoToNextPoint();
-            //Debug.Log("here");
+             
         }
 
 
@@ -46,9 +54,10 @@ public class PathFinding : MonoBehaviour
         }
         else
         {
-            
-            agent.destination = points[destPoint].position;
-            
+                              
+                agent.destination = points[destPoint].position;
+                //Debug.Log(points[destPoint].gameObject.name);
+                     
         }
         destPoint = (destPoint + 1) % points.Length;//goes through all of them
 
@@ -61,12 +70,12 @@ public class PathFinding : MonoBehaviour
 
        if(Startpoint.name== "Startpoint (1)")
         {
-            destination = 1;//if car starts from Startpoint (1) got to waypoint (2)
+            destination = 4;//if car starts from Startpoint (1) got to next waypoint 
 
         }
        else if(Startpoint.name == "Startpoint (2)")
         {
-            destination = 3;//if car starts from Startpoint (2) got to waypoint (4)
+            destination = 6;//if car starts from Startpoint (2) got to next waypoint 
         }
 
         return destination;

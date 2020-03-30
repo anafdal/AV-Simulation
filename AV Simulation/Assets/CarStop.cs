@@ -9,8 +9,8 @@ public class CarStop : MonoBehaviour
 
 
     private Vector3 stopdestination;//original destination/target
-    //public Light green;//stoplight
-    //public Light red;//stoplight
+    public Light green;//stoplight go
+    public Light red;//stoplight stop
     bool stop = false;
     public float time = 4.0f;
 
@@ -52,7 +52,7 @@ public class CarStop : MonoBehaviour
             if (stop == true)//if raycast encounters anything
             {
 
-                if (hit.gameObject.transform.tag == "Stop")//encounters stop line
+                if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
 
@@ -93,7 +93,7 @@ public class CarStop : MonoBehaviour
 
 
                 }
-                else if (hit.transform.tag == "Car")
+                else if (hit.transform.tag == "Car")//detects other car in front
                 {
 
 
@@ -116,6 +116,19 @@ public class CarStop : MonoBehaviour
                     }
 
                 }
+                else if(hit.transform.tag == "Stoplight")//encounters stoplight
+                {
+                    if (red.enabled == true)
+                    {
+                        agent.isStopped = true;
+                    }
+                    else if (green.enabled == true)
+                    {
+                        agent.isStopped = false;
+                    }
+                }
+
+
                 stop = false;
             }
             else
