@@ -83,15 +83,7 @@ public class CarStop : MonoBehaviour
                         }
 
                     }
-                    else
-                    {
-
-                        agent.isStopped = true;
-                        StartCoroutine(ExampleCoroutine());
-
-                    }
-
-
+          
                 }
                 else if (hit.transform.tag == "Car")//detects other car in front
                 {
@@ -118,9 +110,32 @@ public class CarStop : MonoBehaviour
                 }
                 else if(hit.transform.tag == "Stoplight")//encounters stoplight
                 {
+                    stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
+
                     if (red.enabled == true)
                     {
-                        agent.isStopped = true;
+                        if (!agent.pathPending)
+                        {
+                            float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
+                            if (dist1 < 50.0f)//5 meters
+                            {
+
+
+                                agent.isStopped = true;
+                               
+                            }
+                        }
+                        else
+                        {
+                            float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
+                            if (dist1 < 10.0f)//time it takes to stop completely
+                            {
+
+                                agent.isStopped = true;
+                                
+
+                            }
+                        }
                     }
                     else if (green.enabled == true)
                     {
