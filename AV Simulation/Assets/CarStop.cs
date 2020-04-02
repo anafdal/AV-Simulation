@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class CarStop : MonoBehaviour
 {
     public NavMeshAgent agent;
+   
 
 
     private Vector3 stopdestination;//original destination/target
@@ -25,6 +26,7 @@ public class CarStop : MonoBehaviour
 
     void Update()
     {
+        
 
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
@@ -91,21 +93,47 @@ public class CarStop : MonoBehaviour
 
                     float distance1 = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
 
-
-                    if (distance1 < 50.0f)//5 meters
+                    if (!agent.pathPending)
                     {
 
+                        if (distance1 < 50.0f)//5 meters
+                        {
 
-                        agent.isStopped = true;
+
+                            agent.isStopped = true;
 
 
+                        }
+
+                        else
+                        {
+
+                            agent.isStopped = false;
+
+                        }
                     }
                     else
                     {
 
-                        agent.isStopped = false;
+                        if (distance1 < 50.0f)//5 meters
+                        {
+
+
+                            agent.isStopped = true;
+
+
+                        }
+
+                        else
+                        {
+
+                            agent.isStopped = false;
+
+                        }
+
 
                     }
+                  
 
                 }
                 else if(hit.transform.tag == "Stoplight")//encounters stoplight
@@ -148,8 +176,8 @@ public class CarStop : MonoBehaviour
             }
             else
                 agent.isStopped = false;
-
-            
+                agent.SetDestination(agent.steeringTarget);
+         
 
         }
 
