@@ -31,7 +31,7 @@ public class CarStop : MonoBehaviour
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
 
-           Vector3 origin = new Vector3(transform.position.x, 0.0f, transform.position.z);//origin of raycast from center of cube
+            Vector3 origin = new Vector3(transform.position.x, 0.0f, transform.position.z);//origin of raycast from center of cube
             Vector3 direction = transform.forward;//direction of raycast
 
             Ray ray = new Ray(origin, direction);//car raycast
@@ -85,7 +85,7 @@ public class CarStop : MonoBehaviour
                         }
 
                     }
-          
+
                 }
                 else if (hit.transform.tag == "Car")//detects other car in front
                 {
@@ -109,6 +109,7 @@ public class CarStop : MonoBehaviour
                         {
 
                             agent.isStopped = false;
+                            agent.SetDestination(agent.steeringTarget);
 
                         }
                     }
@@ -128,19 +129,20 @@ public class CarStop : MonoBehaviour
                         {
 
                             agent.isStopped = false;
+                            agent.SetDestination(agent.steeringTarget);
 
                         }
 
 
                     }
-                  
+
 
                 }
-                else if(hit.transform.tag == "Stoplight")//encounters stoplight
+                else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
 
-                    if (red.enabled == true)
+                    if (red.enabled == true && green.enabled==false)
                     {
                         if (!agent.pathPending)
                         {
@@ -150,7 +152,7 @@ public class CarStop : MonoBehaviour
 
 
                                 agent.isStopped = true;
-                               
+
                             }
                         }
                         else
@@ -160,14 +162,15 @@ public class CarStop : MonoBehaviour
                             {
 
                                 agent.isStopped = true;
-                                
+
 
                             }
                         }
                     }
-                    else if (green.enabled == true)
+                    else if (green.enabled == true && red.enabled==false)
                     {
                         agent.isStopped = false;
+                        agent.SetDestination(agent.steeringTarget);
                     }
                 }
 
@@ -175,8 +178,10 @@ public class CarStop : MonoBehaviour
                 stop = false;
             }
             else
+            {
                 agent.isStopped = false;
                 agent.SetDestination(agent.steeringTarget);
+            }
          
 
         }
@@ -195,6 +200,7 @@ public class CarStop : MonoBehaviour
         if (stop ==false)
         {
             agent.isStopped = false;
+            agent.SetDestination(agent.steeringTarget);
         }
     }
 

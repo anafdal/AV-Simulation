@@ -27,13 +27,13 @@ public class PathFinding : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 target = agent.steeringTarget - this.transform.position;//hollistic
+       /* Vector3 target = agent.steeringTarget - this.transform.position;//hollistic
         float turnAngle = Vector3.Angle(this.transform.forward, target);
         
         if (turnAngle > 5)
         {
           //  agent.transform.rotation= Quaternion.Euler(this.transform.forward);
-        }
+        }*/
 
         if (!agent.pathPending && agent.remainingDistance < 0.5)//follow path
         {
@@ -49,12 +49,6 @@ public class PathFinding : MonoBehaviour
             GoToNextPoint();
 
         }
-
-        //Vector3 target = agent.steeringTarget - this.transform.position;
-        //  float turnAngle = Vector3.Angle(this.transform.forward, target);
-        //  agent.acceleration = turnAngle * agent.speed;//turn angle wiil adjust for speed
-
-
 
     }
 
