@@ -180,6 +180,7 @@ public class CarStop : MonoBehaviour
             else
             {
                 agent.isStopped = false;
+                stop = false;
                 agent.SetDestination(agent.steeringTarget);
             }
          
