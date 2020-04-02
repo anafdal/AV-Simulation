@@ -286,7 +286,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -492,7 +492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126886084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -160.5, y: -0.23, z: 0}
+  m_LocalPosition: {x: -160.5, y: -0.23, z: 11.600006}
   m_LocalScale: {x: 51.743706, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1897908170}
@@ -792,7 +792,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1328,7 +1328,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2306,7 +2306,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2461,7 +2461,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -4157,7 +4157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229659321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -160.1, y: -0.23, z: 285}
+  m_LocalPosition: {x: -160.1, y: -0.23, z: 286}
   m_LocalScale: {x: 51.2402, y: 1, z: 1}
   m_Children:
   - {fileID: 1293639789}
@@ -4854,7 +4854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371592362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.8, y: 0.01, z: -101}
+  m_LocalPosition: {x: 99.8, y: 0.01, z: -251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 160841097}
@@ -5448,7 +5448,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -6247,7 +6247,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 30
   m_AngularSpeed: 180
-  m_StoppingDistance: 5
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -6749,7 +6749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136194464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -160.2, y: -0.23, z: 27.4}
+  m_LocalPosition: {x: -160.2, y: -0.23, z: 39}
   m_LocalScale: {x: 51.481102, y: 1, z: 1}
   m_Children:
   - {fileID: 19019168}
