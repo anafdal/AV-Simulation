@@ -35,7 +35,7 @@ public class PathFinding : MonoBehaviour
           //  agent.transform.rotation= Quaternion.Euler(this.transform.forward);
         }*/
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5)//follow path
+        if (!agent.pathPending && agent.remainingDistance < 1.0)//follow path
         {
 
             if (points[destPoint].gameObject.name == "Waypoint (1)")
@@ -88,5 +88,5 @@ public class PathFinding : MonoBehaviour
         return destination;
     }
 
-
+  
 }
