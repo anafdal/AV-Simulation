@@ -10,10 +10,10 @@ public class CarStop : MonoBehaviour
 
 
     private Vector3 stopdestination;//original destination/target
-    public Light green;//stoplight go
-    public Light red;//stoplight stop
     bool stop = false;
     public float time = 4.0f;
+    private Light red;
+    private Light green;
 
 
     [SerializeField]
@@ -76,6 +76,13 @@ public class CarStop : MonoBehaviour
                 else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
+                    GameObject stoplight= hit.transform.GetChild(1).gameObject;
+                    //child 2 is red light
+                    //child 3 is green light
+
+                    red = stoplight.transform.Find("red").GetComponent<Light>();
+                    green= stoplight.transform.Find("green").GetComponent<Light>();
+
 
                     if (red.enabled == true && green.enabled == false)
                     {

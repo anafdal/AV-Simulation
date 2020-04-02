@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSwitch : MonoBehaviour
+public class LightSwitch0 : MonoBehaviour
 {
     public Light green;
     public Light red;
+
+  
+
 
 
     // Start is called before the first frame update
@@ -14,6 +17,8 @@ public class LightSwitch : MonoBehaviour
         green= green.GetComponent<Light>();
         red= red.GetComponent<Light>();
         red.enabled = false;//red light is off first
+
+       
     }
 
     // Update is called once per frame
@@ -25,7 +30,9 @@ public class LightSwitch : MonoBehaviour
 
             green.enabled = false;//turn off green light
             red.enabled=true;//turn on red light
-        
+
+          
+
         }
 
         if (Input.GetKey(KeyCode.G))
@@ -34,6 +41,8 @@ public class LightSwitch : MonoBehaviour
 
             green.enabled = true;//turn off green light
             red.enabled = false;//turn on red light
+
+         
 
         }
     }
