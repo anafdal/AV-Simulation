@@ -47,7 +47,7 @@ public class CarStop : MonoBehaviour
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-            Debug.Log(agent + " " + stop);
+            //Debug.Log(agent + " " + stop);
 
             if (stop == true)//if raycast encounters anything
             {
@@ -62,7 +62,7 @@ public class CarStop : MonoBehaviour
                                 //stop = false;
                                                 
                 }
-                if (hit.transform.tag == "Car")//detects other car in front
+               else if (hit.transform.tag == "Car")//detects other car in front
                 {
 
                     float distance1 = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
@@ -71,7 +71,7 @@ public class CarStop : MonoBehaviour
                         //stop = false;
                                     
                 }
-              /*  else if (hit.transform.tag == "Stoplight")//encounters stoplight
+              else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
                     GameObject stoplight= hit.transform.GetChild(1).gameObject;
@@ -97,7 +97,7 @@ public class CarStop : MonoBehaviour
                     }
 
 
-                }*/
+                }
 
                 stop = false;
             }

@@ -6,44 +6,53 @@ public class LightSwitch0 : MonoBehaviour
 {
     public Light green;
     public Light red;
-
-  
-
+    public float time = 25.0f;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        green= green.GetComponent<Light>();
-        red= red.GetComponent<Light>();
-        red.enabled = false;//red light is off first
-
-       
+        green = green.GetComponent<Light>();
+        red = red.GetComponent<Light>();
+        green.enabled = true;
+        red.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (green.enabled == true && red.enabled == false)
         {
-            Debug.Log("Entered");
+            StartCoroutine(LightChange1());
 
-            green.enabled = false;//turn off green light
-            red.enabled=true;//turn on red light
-
-          
+        }
+        else if (green.enabled == false && red.enabled == true)
+        {
+            StartCoroutine(LightChange2());
 
         }
 
-        if (Input.GetKey(KeyCode.G))
-        {
-            Debug.Log("Entered");
+    }
 
-            green.enabled = true;//turn off green light
-            red.enabled = false;//turn on red light
+    IEnumerator LightChange1()//wait for ... seconds before car becomes active
+    {
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        yield return new WaitForSeconds(time);
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
-         
+        green.enabled = false;
+        red.enabled = true;
+        //Debug.Log("Entered1");
+    }
 
-        }
+
+    IEnumerator LightChange2()//wait for ... seconds before car becomes active
+    {
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        yield return new WaitForSeconds(time);
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+        green.enabled = true;
+        red.enabled = false;
+        //Debug.Log("Entered2");
     }
 }
