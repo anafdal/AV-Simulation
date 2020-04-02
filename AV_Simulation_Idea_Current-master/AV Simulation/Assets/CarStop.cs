@@ -6,18 +6,16 @@ using UnityEngine.AI;
 public class CarStop : MonoBehaviour
 {
     public NavMeshAgent agent;
-   
-
-
     private Vector3 stopdestination;//original destination/target
-    bool stop = false;
+
+    private bool stop = false;
     public float time = 4.0f;
-    private Light red;
-    private Light green;
+     // private Light red;
+    //private Light green;
 
 
     [SerializeField]
-    private LayerMask layerMask;
+    private LayerMask layerMask=new LayerMask();
     public float maxDistance = 100.0f;//10 meters
     RaycastHit raycastHit;//hit
     GameObject hit;
@@ -42,46 +40,46 @@ public class CarStop : MonoBehaviour
                 stop = true;//has encountered stopline
                 hit = raycastHit.transform.gameObject;
 
-                hit.GetComponent<Renderer>().material.color = Color.red;//change color
+                //hit.GetComponent<Renderer>().material.color = Color.red;//change color
                 Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 //Debug.Log(hit.name);
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+            Debug.Log(agent + " " + stop);
 
             if (stop == true)//if raycast encounters anything
             {
 
-                if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
+               if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
                     float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
 
                                 Stop_Car(dist1);
                                 StartCoroutine(ExampleCoroutine());
-                                stop = false;
+                                //stop = false;
                                                 
                 }
-                else if (hit.transform.tag == "Car")//detects other car in front
+                if (hit.transform.tag == "Car")//detects other car in front
                 {
 
                     float distance1 = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
 
                         Stop_Car(distance1);
-                        stop = false;
+                        //stop = false;
                                     
                 }
-                else if (hit.transform.tag == "Stoplight")//encounters stoplight
+              /*  else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
                     GameObject stoplight= hit.transform.GetChild(1).gameObject;
                     //child 2 is red light
                     //child 3 is green light
 
-                    red = stoplight.transform.Find("red").GetComponent<Light>();
-                    green= stoplight.transform.Find("green").GetComponent<Light>();
+                    Light red = stoplight.transform.Find("red").GetComponent<Light>();
+                    Light green= stoplight.transform.Find("green").GetComponent<Light>();
 
 
                     if (red.enabled == true && green.enabled == false)
@@ -89,30 +87,31 @@ public class CarStop : MonoBehaviour
 
                         float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
                         Stop_Car(dist1);
-                        stop = false;
+                        //stop = false;
                     }
              
                 else if (green.enabled == true && red.enabled == false)
                     {
                         agent.isStopped = false;
-                        stop = false;                      
+                        //stop = false;                      
                     }
 
 
-                }
-                //
-            }
-            else
-            {
-                agent.isStopped = false;
+                }*/
+
                 stop = false;
-                agent.SetDestination(agent.steeringTarget);
+            }
+            else if(stop==false)
+            {
+                //agent.isStopped = false;
+                 agent.SetDestination(agent.steeringTarget);
                 
             }
          
 
         }
 
+        
 
     }
 
