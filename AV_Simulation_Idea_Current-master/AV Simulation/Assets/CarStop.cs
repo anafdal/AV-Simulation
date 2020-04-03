@@ -50,7 +50,7 @@ public class CarStop : MonoBehaviour
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-            Debug.Log(agent + "in " + stop);
+            //Debug.Log(agent + "in " + stop);
 
             if (stop== true)//if raycast encounters anything
             {
@@ -65,15 +65,16 @@ public class CarStop : MonoBehaviour
                                 //stop = false;
                                                 
                 }
-               /*else if (hit.transform.tag == "Car")//detects other car in front
+              else if (hit.transform.tag == "Car")//detects other car in front
                 {
+                    stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
 
-                    float distance1 = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
+                    float distance1 = Vector3.Distance(transform.position, stopdestination);//distance between objects
 
                         Stop_Car(distance1);
                         //stop = false;
                                     
-                }*/
+                }
               else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
@@ -91,7 +92,7 @@ public class CarStop : MonoBehaviour
                         if (dist1 < 60.0f)//5 meters
                         {
                             agent.isStopped = true;
-                            stop = false;
+                            //stop = false;
 
 
                         }
@@ -110,17 +111,16 @@ public class CarStop : MonoBehaviour
             }
             else if(stop==false)
             {
-                //agent.isStopped = false;
-                //agent.velocity = transform.forward * Time.deltaTime;
+               
                 agent.isStopped = false;
                 //transform.LookAt(agent.steeringTarget);
                 agent.SetDestination(agent.steeringTarget);
-                agent.isStopped = false;
-                Debug.Log(agent+": "+agent.isOnNavMesh);
+            
+                //Debug.Log(agent+": "+agent.isOnNavMesh);
                 
             }
 
-           Debug.Log(agent + " out " + stop);
+           //Debug.Log(agent + " out " + stop);
 
         }
 
@@ -136,11 +136,10 @@ public class CarStop : MonoBehaviour
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
         yield return new WaitForSeconds(time);
        // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-       if (stop ==false)
-        {
+      
             agent.isStopped = false;
             //agent.SetDestination(agent.steeringTarget);
-        }
+        
     }
 
 
