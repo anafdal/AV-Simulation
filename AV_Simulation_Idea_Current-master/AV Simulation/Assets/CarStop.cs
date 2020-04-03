@@ -8,7 +8,7 @@ public class CarStop : MonoBehaviour
     public NavMeshAgent agent;
     private Vector3 stopdestination;//original destination/target
 
-    private bool stop = false;
+    public static bool stop = false;
     public float time = 4.0f;
      // private Light red;
     //private Light green;
@@ -20,7 +20,10 @@ public class CarStop : MonoBehaviour
     RaycastHit raycastHit;//hit
     GameObject hit;
 
-
+   void Start()
+    {
+        agent = agent.GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
@@ -47,9 +50,9 @@ public class CarStop : MonoBehaviour
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-            //Debug.Log(agent + " " + stop);
+            Debug.Log(agent + "in " + stop);
 
-            if (stop == true)//if raycast encounters anything
+            if (stop== true)//if raycast encounters anything
             {
 
                if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
@@ -62,7 +65,7 @@ public class CarStop : MonoBehaviour
                                 //stop = false;
                                                 
                 }
-               else if (hit.transform.tag == "Car")//detects other car in front
+               /*else if (hit.transform.tag == "Car")//detects other car in front
                 {
 
                     float distance1 = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
@@ -70,7 +73,7 @@ public class CarStop : MonoBehaviour
                         Stop_Car(distance1);
                         //stop = false;
                                     
-                }
+                }*/
               else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
@@ -81,16 +84,20 @@ public class CarStop : MonoBehaviour
                     Light red = stoplight.transform.Find("red").GetComponent<Light>();
                     Light green= stoplight.transform.Find("green").GetComponent<Light>();
 
-
-                    if (red.enabled == true && green.enabled == false)
+                    if (red.enabled == true)
                     {
 
                         float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
-                        Stop_Car(dist1);
-                        //stop = false;
+                        if (dist1 < 60.0f)//5 meters
+                        {
+                            agent.isStopped = true;
+                            stop = false;
+
+
+                        }
                     }
              
-                else if (green.enabled == true && red.enabled == false)
+                else if (green.enabled == true)
                     {
                         agent.isStopped = false;
                         //stop = false;                      
@@ -104,10 +111,16 @@ public class CarStop : MonoBehaviour
             else if(stop==false)
             {
                 //agent.isStopped = false;
-                 agent.SetDestination(agent.steeringTarget);
+                //agent.velocity = transform.forward * Time.deltaTime;
+                agent.isStopped = false;
+                //transform.LookAt(agent.steeringTarget);
+                agent.SetDestination(agent.steeringTarget);
+                agent.isStopped = false;
+                Debug.Log(agent+": "+agent.isOnNavMesh);
                 
             }
-         
+
+           Debug.Log(agent + " out " + stop);
 
         }
 
@@ -123,7 +136,7 @@ public class CarStop : MonoBehaviour
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
         yield return new WaitForSeconds(time);
        // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        if (stop ==false)
+       if (stop ==false)
         {
             agent.isStopped = false;
             //agent.SetDestination(agent.steeringTarget);

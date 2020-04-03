@@ -6,7 +6,7 @@ public class LightSwitch0 : MonoBehaviour
 {
     public Light green;
     public Light red;
-    public float time = 25.0f;
+    public float time = 20.0f;
 
 
     void Start()
