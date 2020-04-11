@@ -45,7 +45,7 @@ public class CarStop : MonoBehaviour
 
                 //hit.GetComponent<Renderer>().material.color = Color.red;//change color
                 Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-                //Debug.Log(hit.name);
+                Debug.Log(hit.name);
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,6 +75,14 @@ public class CarStop : MonoBehaviour
                         //stop = false;
                                     
                 }
+              /* else if (hit.transform.tag == "Protector")
+                {
+                    stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
+
+                    float distance1 = Vector3.Distance(transform.position, stopdestination);//distance between objects
+
+                    Stop_Car(distance1);
+                }*/
               else if (hit.transform.tag == "Stoplight")//encounters stoplight
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
@@ -92,8 +100,7 @@ public class CarStop : MonoBehaviour
                         if (dist1 < 60.0f)//5 meters
                         {
                             agent.isStopped = true;
-                            //stop = false;
-
+                           
 
                         }
                     }
@@ -101,7 +108,7 @@ public class CarStop : MonoBehaviour
                 else if (green.enabled == true)
                     {
                         agent.isStopped = false;
-                        //stop = false;                      
+                                             
                     }
 
 
@@ -145,7 +152,7 @@ public class CarStop : MonoBehaviour
 
     void Stop_Car(float distance)
     {
-        if (distance < 50.0f)//5 meters
+        if (distance < 60.0f)//5 meters
         {
 
 

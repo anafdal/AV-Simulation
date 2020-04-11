@@ -20,7 +20,7 @@ public class RecycleRoad : MonoBehaviour
         newStartObject = startPoints[position];//get the object
     }
 
-    private int returnPosition()
+    private int returnPosition()//separete between even and odd ordered cars to warp in one of the two points
     {
         //int range = Random.Range(0, newRoad.Length);//randomly generated value
         //return range;

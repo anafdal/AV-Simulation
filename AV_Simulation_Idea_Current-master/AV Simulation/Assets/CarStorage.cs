@@ -12,7 +12,7 @@ public class CarStorage : MonoBehaviour
     public void Start()
     {
         value = true;
-         //cars[0].SetActive(true);
+        cars[0].SetActive(true);
         //StartCoroutine(ExampleCoroutine());//this will be called once all cars are deactivated
     }
 
@@ -56,9 +56,9 @@ public class CarStorage : MonoBehaviour
             
             if (car.activeInHierarchy == false)
             {
-               //car.SetActive(true);
+               
                 yield return new WaitForSeconds(rate);
-               car.SetActive(true);//works
+                car.SetActive(true);//works
             }
 
         }

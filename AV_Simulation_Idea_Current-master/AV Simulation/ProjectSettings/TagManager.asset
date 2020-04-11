@@ -8,6 +8,8 @@ TagManager:
   - Stop
   - Stoplight
   - Seperate
+  - Fire
+  - Protector
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Car
   - Sidelines
   - Stoplight
-  - 
-  - 
+  - Player
+  - Protector
   - 
   - 
   - 
