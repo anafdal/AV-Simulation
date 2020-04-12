@@ -61,38 +61,49 @@ public class CarStop : MonoBehaviour
                 if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
-                    float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
+                    float distance = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
 
-                    Stop_Car(dist1);
-                    StartCoroutine(ExampleCoroutine());
-                    //stop = false;
+                    Stop_Car(distance);
+
+                    if (Trigger1.needtoStop1 == true && hit.name== "Stopline(2)(Stop)")
+                    {
+                        agent.isStopped = true;
+                        
+                    }
+                    else if(Trigger1.needtoStop1 == true && hit.name == "Stopline (6)(Stop)")
+                    {
+                        agent.isStopped = true;
+                    }
+                    else 
+                        StartCoroutine(ExampleCoroutine());
+
+                    
+                    
 
                 }
                 else if (hit.transform.tag == "Car")//detects other car in front
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
 
-                    float distance1 = Vector3.Distance(transform.position, stopdestination);//distance between objects
+                    float distance = Vector3.Distance(transform.position, stopdestination);//distance between objects
 
-                    Stop_Car(distance1);
+                    Stop_Car(distance);
                     //stop = false;
 
                 }
                 else if (hit.transform.tag == "Protector")//detect the person
                 {
                     //agent.acceleration = 70000000000000;
-                    stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
+                    //stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//distance between objects
 
 
-                    //Stop_Car(distance);
-
-                    if (distance < 20.0f)//5 meters
+                    if (distance < 30.0f)
                     {
 
                         agent.velocity = Vector3.zero;
-                       //agent.gameObject.GetComponent<Rigidbody>().MovePosition(stopdestination);
+                      
                      
 
                     }
@@ -118,8 +129,8 @@ public class CarStop : MonoBehaviour
                     if (red.enabled == true)
                     {
 
-                        float dist1 = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
-                        if (dist1 < 60.0f)//5 meters
+                        float distance = Vector3.Distance(transform.position, stopdestination);//if path is still being decided and information has not loaded
+                        if (distance < 60.0f)//5 meters
                         {
                             agent.isStopped = true;
 
