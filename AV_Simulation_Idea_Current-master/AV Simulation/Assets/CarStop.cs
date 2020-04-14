@@ -87,11 +87,26 @@ public class CarStop : MonoBehaviour
 
                     float distance = Vector3.Distance(transform.position, stopdestination);//distance between objects
 
-                    Stop_Car(distance);
+                    //Stop_Car(distance);
                     //stop = false;
+                    if (distance < 30.0f)
+                    {
+
+                        agent.velocity = Vector3.zero;
+
+
+
+                    }
+                    else
+                    {
+                        agent.SetDestination(agent.steeringTarget);
+
+                    }
+
+
 
                 }
-                else if (hit.transform.tag == "Protector")//detect the person
+                else if (hit.transform.tag == "Player")//detect the person
                 {
                     //agent.acceleration = 70000000000000;
                     //stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
