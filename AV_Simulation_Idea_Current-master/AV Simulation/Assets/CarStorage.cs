@@ -7,13 +7,13 @@ public class CarStorage : MonoBehaviour
 
     public GameObject[] cars;//list of cars
     private bool value;//only true if one or more cars are active
-    public float rate = 10.0f;
+    public float rate = 10.0f;//rate at which cars get generated
 
     public void Start()
     {
         value = true;
         cars[0].SetActive(true);
-        //StartCoroutine(ExampleCoroutine());//this will be called once all cars are deactivated
+       
     }
 
     void Update()
@@ -23,7 +23,7 @@ public class CarStorage : MonoBehaviour
 
         if (value == false)
         {
-            StartCoroutine(ExampleCoroutine());//this will be called once all cars are deactivated
+            StartCoroutine(RateCoroutine());//this will be called once all cars are deactivated
             value = true;
         }
 
@@ -48,7 +48,7 @@ public class CarStorage : MonoBehaviour
         return value;
     }
 
-    IEnumerator ExampleCoroutine()//wait for ... seconds before car becomes active
+    IEnumerator RateCoroutine()//wait for ... seconds before car becomes active
     {
 
         foreach (GameObject car in cars)
@@ -58,7 +58,7 @@ public class CarStorage : MonoBehaviour
             {
                
                 yield return new WaitForSeconds(rate);
-                car.SetActive(true);//works
+                car.SetActive(true);// cars start activing 
             }
 
         }

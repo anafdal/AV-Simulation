@@ -6,7 +6,7 @@ public class LightSwitch1 : MonoBehaviour
 {
     public Light green;
     public Light red;
-    public float time=20.0f;
+    public float time=20.0f;//rate to change light
 
 
     void Start()

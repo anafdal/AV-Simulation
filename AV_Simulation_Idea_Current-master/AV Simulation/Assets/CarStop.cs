@@ -50,7 +50,7 @@ public class CarStop : MonoBehaviour
 
                 //hit.GetComponent<Renderer>().material.color = Color.red;//change color
                 //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-                Debug.Log(hit.transform.name);
+                Debug.Log(hit.transform.tag);
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
@@ -76,14 +76,14 @@ public class CarStop : MonoBehaviour
                         {
 
                             stoptime_Car1 = false;//stop at first stopline
-                            Debug.Log("Here 2 " + stoptime_Car1);
+                            //Debug.Log("Here 2 " + stoptime_Car1);
 
                         }
                         else if (Trigger2.needtoStop2 == true && hit.transform.name == "Stopline (6)(Stop)")
                         {
 
                             stoptime_Car2 = false;//stop at second stopline
-                            Debug.Log("Here 6" + stoptime_Car2);
+                            //Debug.Log("Here 6" + stoptime_Car2);
                         }
 
                     }
@@ -93,12 +93,12 @@ public class CarStop : MonoBehaviour
                     //restarting
                     if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
                     {                  
-                        StartCoroutine(ExampleCoroutine1());
+                        StartCoroutine(CarCoroutine1());
                     }
                     else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
                     {
                        
-                        StartCoroutine(ExampleCoroutine2());
+                        StartCoroutine(CarCoroutine2());
                     }
 
 
@@ -203,8 +203,7 @@ public class CarStop : MonoBehaviour
 
 
 
-
-    IEnumerator ExampleCoroutine1()//wait for ... seconds before car becomes active
+    IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
     {
         if (stoptime_Car1 == false)
         {
@@ -217,7 +216,7 @@ public class CarStop : MonoBehaviour
         agent.isStopped = false;
     }
 
-    IEnumerator ExampleCoroutine2()//wait for ... seconds before car becomes active
+    IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
     {
         if (stoptime_Car2 == false)
         {
@@ -230,24 +229,6 @@ public class CarStop : MonoBehaviour
        
     }
 
-
-    void Stop_Car(float distance)
-    {
-        if (distance < stopDistance_Stop)//5 meters
-        {
-
-
-            agent.isStopped = true;
-
-
-        }
-        else
-        {
-            agent.isStopped = false;
-
-        }
-
-    }
 }
 
 
