@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class CarStop : MonoBehaviour
-{
+{//found in car(..)
+
     public NavMeshAgent agent;
     private Vector3 stopdestination;//original destination/target
     private bool stoptime_Car1 = true;//needed so car doesnt have to wait right after person has moved the crosswalk
@@ -15,7 +16,7 @@ public class CarStop : MonoBehaviour
     public float time = 5.0f;
     public float stopDistance_Car = 20.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
-    public float stopDistance_Person = 30.0f;//distance to stop behind person
+    public float stopDistance_Person = 70.0f;//distance to stop behind person
 
     //raycast
     [SerializeField]
@@ -37,7 +38,7 @@ public class CarStop : MonoBehaviour
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
 
-            Vector3 origin = new Vector3(transform.position.x, 0.0f, transform.position.z);//origin of raycast from center of cube
+            Vector3 origin = new Vector3(transform.position.x, 0.5f, transform.position.z);//origin of raycast from center of cube
             Vector3 direction = transform.forward;//direction of raycast
 
             Ray ray = new Ray(origin, direction);//car raycast
@@ -49,7 +50,7 @@ public class CarStop : MonoBehaviour
                 hit = raycastHit.transform.gameObject;
 
                 //hit.GetComponent<Renderer>().material.color = Color.red;//change color
-                //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
+                Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 Debug.Log(hit.transform.tag);
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
@@ -127,7 +128,7 @@ public class CarStop : MonoBehaviour
 
 
                 }
-                else if (hit.transform.tag == "Player")//detect a person
+                else if (hit.transform.tag == "Protector")//detect a person
                 {
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
@@ -137,12 +138,14 @@ public class CarStop : MonoBehaviour
                     {
 
                         agent.velocity = Vector3.zero;
+                        Debug.Log("Stop Here");
+                         
 
                     }
                     else
                     {
                         agent.SetDestination(agent.steeringTarget);//resume path once person moves away
-
+                   
                     }
 
 
