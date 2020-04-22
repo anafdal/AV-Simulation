@@ -14,7 +14,7 @@ public class CarStop : MonoBehaviour
     //settings
     public static bool stop = false;
     public float time = 5.0f;
-    public float stopDistance_Car = 30.0f;//distance to stop behind another 
+    public float stopDistance_Car = 20.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 70.0f;//distance to stop behind person
 
@@ -38,7 +38,7 @@ public class CarStop : MonoBehaviour
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
 
-            Vector3 origin = new Vector3(transform.position.x, -5.0f, transform.position.z);//origin of raycast from center of cube
+            Vector3 origin = new Vector3(transform.position.x, -2.0f, transform.position.z);//origin of raycast from center of cube
             Vector3 direction = transform.forward;//direction of raycast
 
             Ray ray = new Ray(origin, direction);//car raycast
