@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &84153437
 Transform:
   m_ObjectHideFlags: 0
@@ -754,7 +754,7 @@ Transform:
   - {fileID: 1371592366}
   - {fileID: 1027085931}
   m_Father: {fileID: 1084153264}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163446400
 GameObject:
@@ -909,7 +909,6 @@ MonoBehaviour:
   - {fileID: 1083372336}
   - {fileID: 1727051117}
   - {fileID: 2136446383}
-  - {fileID: 84153437}
   - {fileID: 1334784702}
   agent: {fileID: 169953919}
 --- !u!195 &169953919
@@ -3441,6 +3440,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7339124029955903326, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_Name
+      value: Building(2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819683519105075092, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_Name
+      value: Building(2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4934007815951359948, guid: 644b263e416180546bf44bc38979077a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3620,11 +3629,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Walking Path(2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8819683519105075092, guid: 644b263e416180546bf44bc38979077a,
-        type: 3}
-      propertyPath: m_Name
-      value: Building(2)
       objectReference: {fileID: 0}
     - target: {fileID: 3144304527841194042, guid: 644b263e416180546bf44bc38979077a,
         type: 3}
@@ -3860,11 +3864,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road(2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339124029955903326, guid: 644b263e416180546bf44bc38979077a,
-        type: 3}
-      propertyPath: m_Name
-      value: Building(2)
       objectReference: {fileID: 0}
     - target: {fileID: 6013911140011227449, guid: 644b263e416180546bf44bc38979077a,
         type: 3}
@@ -5484,10 +5483,9 @@ Transform:
   - {fileID: 1967993995}
   - {fileID: 1551787336}
   - {fileID: 1897908170}
-  - {fileID: 1556650862}
   - {fileID: 160841097}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098730554
 GameObject:
@@ -7312,7 +7310,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1, y: 1, z: 1}
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -7590,7 +7588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556650861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.2856, y: 34.31086, z: -290.50763}
+  m_LocalPosition: {x: 0, y: 0, z: -10.200012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1639549898}
@@ -7600,8 +7598,8 @@ Transform:
   - {fileID: 169953917}
   - {fileID: 351102218}
   - {fileID: 734455135}
-  m_Father: {fileID: 1084153264}
-  m_RootOrder: 11
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1556650863
 MonoBehaviour:
@@ -7963,7 +7961,6 @@ MonoBehaviour:
   - {fileID: 1083372336}
   - {fileID: 1727051117}
   - {fileID: 2136446383}
-  - {fileID: 84153437}
   - {fileID: 1334784702}
   agent: {fileID: 1639549899}
 --- !u!114 &1639549901
@@ -9195,7 +9192,6 @@ MonoBehaviour:
   - {fileID: 1083372336}
   - {fileID: 1727051117}
   - {fileID: 2136446383}
-  - {fileID: 84153437}
   - {fileID: 1334784702}
   agent: {fileID: 1799891593}
 --- !u!195 &1799891593
@@ -10349,7 +10345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2124129943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32baf2a30e0b8914db66d5617334256e, type: 3}
+  m_Script: {fileID: 11500000, guid: d065869cb5550ca4e95091453c18ece9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   green: {fileID: 280919637}
