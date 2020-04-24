@@ -49,8 +49,8 @@ public class CarStop : MonoBehaviour
                 stop = true;//has encountered object of interest
                 hit = raycastHit.transform.gameObject;
 
-                hit.GetComponent<Renderer>().material.color = Color.red;//change color
-                Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
+                //hit.GetComponent<Renderer>().material.color = Color.red;//change color
+               // Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 Debug.Log(hit.transform.tag);
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
