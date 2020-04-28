@@ -27,7 +27,7 @@ public class CarStop : MonoBehaviour
 
 
     //used for Images
-    public static int imValue;
+    public static int imValue=0;
 
     void Start()
     {
@@ -55,9 +55,9 @@ public class CarStop : MonoBehaviour
 
                 //hit.GetComponent<Renderer>().material.color = Color.red;//change color
                 //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-                 Debug.Log(agent.transform.name+" "+hit.transform.tag);
+                // Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
-                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Protector" || hit.transform.tag == "Stoplight") {
+                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Protector" || hit.transform.tag == "Stoplight") {//might need to make separate value for each of this, where you separate each thing and stop tag
 
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
@@ -76,7 +76,12 @@ public class CarStop : MonoBehaviour
                     {
                         imValue = 3;
                     }
+                
                  }
+                else
+                {
+                    imValue = 0;
+                }
           
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
