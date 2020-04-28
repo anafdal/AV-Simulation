@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IconDetect : MonoBehaviour
+public class IconDetect1 : MonoBehaviour
 {
     //detected
     public GameObject Image1;

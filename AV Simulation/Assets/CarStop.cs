@@ -62,27 +62,30 @@ public class CarStop : MonoBehaviour
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
 
-                    if (20< distance && distance<70 && agent.isStopped==false)
-                    {
-                        imValue = 1;
-                        
-                    }
-                    else if (agent.isStopped==true && distance<=20)
-                    {
-                        imValue = 2;
-                        Debug.Log(imValue);
-                    }
-                    else if (agent.isStopped == false && distance <= 20)
-                    {
-                        imValue = 3;
-                    }
-                
+                    
+                        if (20 < distance && distance < 70 && agent.isStopped == false)
+                        {
+                            imValue = 1;
+
+                        }
+                        else if (agent.isStopped == true && distance <= 20)
+                        {
+                            imValue = 2;
+                            //Debug.Log(imValue);
+                        }
+                        else if (agent.isStopped == false && distance <= 20)
+                        {
+                            imValue = 3;
+                        }
+                   
+              
                  }
-                else
-                {
-                    imValue = 0;
-                }
-          
+
+
+            }
+            else//good here
+            {
+                imValue = 0;
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
@@ -167,7 +170,7 @@ public class CarStop : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Protector")//detect a person
                 {
-                    //imValue = 2;//can cross
+                    
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
 
@@ -182,7 +185,7 @@ public class CarStop : MonoBehaviour
                     }
                     else
                     {
-                        //imValue = 3;
+                        
                         agent.SetDestination(agent.steeringTarget);//resume path once person moves away
                      
                     }
@@ -206,7 +209,7 @@ public class CarStop : MonoBehaviour
                         float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
                         if (distance < stopDistance_Stop)
                         {
-                           //imValue = 2;
+                           
                             agent.isStopped = true;//agent will stop
 
 
@@ -215,7 +218,7 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                        //imValue = 3;
+                        
                         agent.isStopped = false;//agent will move
                        
                     }
@@ -253,14 +256,14 @@ public class CarStop : MonoBehaviour
         if (stoptime_Car1 == false)
         {
             yield return new WaitForSeconds(1.0f);
-            //imValue = 3;
+            
         }
         else
         {
             
             yield return new WaitForSeconds(time);
             // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-            //imValue = 3;
+            
         }
         
         agent.isStopped = false;
