@@ -57,7 +57,7 @@ public class CarStop : MonoBehaviour
                 //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 // Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
-                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Protector" || hit.transform.tag == "Stoplight") {//might need to make separate value for each of this, where you separate each thing and stop tag
+                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Stoplight") {//might need to make separate value for each of this, where you separate each thing and stop tag
 
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects

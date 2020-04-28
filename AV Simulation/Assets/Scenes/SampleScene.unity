@@ -3398,6 +3398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -5992758091971249751, guid: 369d96080b28e5f439ab49ae0aba924d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 369d96080b28e5f439ab49ae0aba924d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4107,7 +4112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1246282873}
   y: -20
-  z: 30
+  z: 15
 --- !u!65 &635777708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10819,6 +10824,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -5992758091971249751, guid: 369d96080b28e5f439ab49ae0aba924d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 369d96080b28e5f439ab49ae0aba924d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11392,6 +11402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - {fileID: 1639549894}
+  - {fileID: 1799891590}
   rate: 3
 --- !u!1001 &1563143075
 PrefabInstance:
@@ -11906,7 +11917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1246282873}
   y: -20
-  z: -30
+  z: -15
 --- !u!1 &1639549894
 GameObject:
   m_ObjectHideFlags: 0
@@ -13767,7 +13778,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &1799891598
 MonoBehaviour:

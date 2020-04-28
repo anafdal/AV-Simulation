@@ -5,8 +5,8 @@ using UnityEngine;
 public class FollowPlayer2 : MonoBehaviour
 {
     public Transform target;
-    public int y = -20;
-    public int z = 30;
+    public int y = -23;
+    public int z = 15;
 
     // Start is called before the first frame update
     void Start()
