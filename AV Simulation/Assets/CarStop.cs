@@ -25,6 +25,10 @@ public class CarStop : MonoBehaviour
     RaycastHit raycastHit;//hit
     GameObject hit;
 
+
+    //used for Images
+    public static int imValue=0;
+
     void Start()
     {
         agent = agent.GetComponent<NavMeshAgent>();
@@ -50,8 +54,17 @@ public class CarStop : MonoBehaviour
                 hit = raycastHit.transform.gameObject;
 
                 //hit.GetComponent<Renderer>().material.color = Color.red;//change color
-               // Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-                Debug.Log(hit.transform.tag);
+                //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
+                 Debug.Log(agent.transform.name+" "+hit.transform.tag);
+
+                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Protector" || hit.transform.tag == "Stoplight") {
+                          imValue = 1;
+                          Debug.Log(imValue);
+                 }
+                 else
+                 {
+                    imValue = 0;
+                 }
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
@@ -63,21 +76,26 @@ public class CarStop : MonoBehaviour
 
                 if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
                 {
+                    
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
-           
+                  
 
-                  //stopping
-                 if(distance < stopDistance_Stop){//if no one is crossing, continue usual routine
+                    //stopping
+                    if (distance < stopDistance_Stop){//if no one is crossing, continue usual routine
+                        //imValue = 2;////can cross
 
-                      agent.isStopped = true;
 
+                        agent.isStopped = true;
+
+                       
                         //determine if there is person or not crossing
                         if (Trigger1.needtoStop1 == true && hit.transform.name== "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
                         {
 
                             stoptime_Car1 = false;//stop at first stopline
                             //Debug.Log("Here 2 " + stoptime_Car1);
+                            
 
                         }
                         else if (Trigger2.needtoStop2 == true && hit.transform.name == "Stopline (6)(Stop)")
@@ -85,6 +103,7 @@ public class CarStop : MonoBehaviour
 
                             stoptime_Car2 = false;//stop at second stopline
                             //Debug.Log("Here 6" + stoptime_Car2);
+                            
                         }
 
                     }
@@ -95,14 +114,18 @@ public class CarStop : MonoBehaviour
                     if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
                     {                  
                         StartCoroutine(CarCoroutine1());
+                      
                     }
                     else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
                     {
                        
                         StartCoroutine(CarCoroutine2());
+                       
                     }
 
 
+                
+                   
 
                 }
                 else if (hit.transform.tag == "Car")//detects other car in front
@@ -130,6 +153,7 @@ public class CarStop : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Protector")//detect a person
                 {
+                    imValue = 2;//can cross
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
 
@@ -144,8 +168,9 @@ public class CarStop : MonoBehaviour
                     }
                     else
                     {
+                        imValue = 3;
                         agent.SetDestination(agent.steeringTarget);//resume path once person moves away
-                   
+                     
                     }
 
 
@@ -167,6 +192,7 @@ public class CarStop : MonoBehaviour
                         float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
                         if (distance < stopDistance_Stop)
                         {
+                           imValue = 2;
                             agent.isStopped = true;//agent will stop
 
 
@@ -175,8 +201,9 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
+                        imValue = 3;
                         agent.isStopped = false;//agent will move
-
+                       
                     }
 
 
@@ -184,6 +211,7 @@ public class CarStop : MonoBehaviour
 
 
                 stop = false;//nothing is being detected by raycast anymore
+              
 
             }
             else if (stop == false)//if nothing is being detected car will continue on its path
@@ -211,25 +239,38 @@ public class CarStop : MonoBehaviour
         if (stoptime_Car1 == false)
         {
             yield return new WaitForSeconds(1.0f);
+            //imValue = 3;
         }
         else
-           yield return new WaitForSeconds(time);
-        // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
+        {
+            
+            yield return new WaitForSeconds(time);
+            // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+            //imValue = 3;
+        }
+        
         agent.isStopped = false;
+        
     }
 
     IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
     {
+        
         if (stoptime_Car2 == false)
         {
             yield return new WaitForSeconds(1.0f);
+          
         }
-        else       
-          yield return new WaitForSeconds(time);
-      
+        else
+        {
+            
+            yield return new WaitForSeconds(time);
+            
+        }
+
+        
         agent.isStopped = false;
-       
+        
     }
 
 }
