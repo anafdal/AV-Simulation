@@ -27,7 +27,7 @@ public class CarStop : MonoBehaviour
 
 
     //used for Images
-    public static int imValue=0;
+    //public static int imValue=0;
 
     void Start()
     {
@@ -57,35 +57,24 @@ public class CarStop : MonoBehaviour
                 //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 // Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
-                 if (hit.transform.tag == "Stop" || hit.transform.tag == "Stoplight") {//might need to make separate value for each of this, where you separate each thing and stop tag
+                 if (hit.transform.tag == "Stop") {//might need to make separate value for each of this, where you separate each thing and stop tag
 
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
 
-                    
-                        if (20 < distance && distance < 70 && agent.isStopped == false)
-                        {
-                            imValue = 1;
+                    ChangeIcon(agent.name, distance);
 
-                        }
-                        else if (agent.isStopped == true && distance <= 20)
-                        {
-                            imValue = 2;
-                            //Debug.Log(imValue);
-                        }
-                        else if (agent.isStopped == false && distance <= 20)
-                        {
-                            imValue = 3;
-                        }
-                   
-              
+
                  }
 
 
             }
             else//good here
             {
-                imValue = 0;
+
+
+                StopIcon(agent.name);                  
+               
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
@@ -203,10 +192,15 @@ public class CarStop : MonoBehaviour
                     Light red = stoplight.transform.Find("red").GetComponent<Light>();
                     Light green = stoplight.transform.Find("green").GetComponent<Light>();
 
+
+                    float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
+                    ChangeIcon2(agent.name, distance, red.enabled);//only if light is red
+
+
                     if (red.enabled == true)//if red is on
                     {
 
-                        float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
+                    
                         if (distance < stopDistance_Stop)
                         {
                            
@@ -219,6 +213,7 @@ public class CarStop : MonoBehaviour
                     else if (green.enabled == true)//if green is on
                     {
                         
+
                         agent.isStopped = false;//agent will move
                        
                     }
@@ -289,6 +284,109 @@ public class CarStop : MonoBehaviour
         agent.isStopped = false;
         
     }
+
+    public void ChangeIcon(string carName,float distance)//for stop sings
+    {
+
+        if (carName == "Car (1)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect1.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect1.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect1.imValue = 3;
+            }
+        }
+        else if(carName== "Car (2)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect2.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect2.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect2.imValue = 3;
+            }
+
+        }
+
+
+    }
+
+    public void StopIcon(string carName)
+    {
+
+        if (carName == "Car (1)")
+        {
+
+            IconDetect1.imValue = 0;
+        }
+        else if (carName == "Car (2)")
+        {
+            IconDetect2.imValue = 0;
+
+        }
+
+
+    }
+
+    public void ChangeIcon2(string carName, float distance, bool red)//for stoplights
+    {
+
+        if (carName == "Car (1)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red==true)
+            {
+                IconDetect1.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35  && red==true)
+            {
+                IconDetect1.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red==false)
+            {
+                IconDetect1.imValue = 3;
+            }
+        }
+        else if (carName == "Car (2)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect2.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect2.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect2.imValue = 3;
+            }
+
+        }
+
+
+    }
+
+
 
 }
 

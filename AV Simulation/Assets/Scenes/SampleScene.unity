@@ -13628,8 +13628,8 @@ GameObject:
   - component: {fileID: 1799891593}
   - component: {fileID: 1799891599}
   - component: {fileID: 1799891592}
-  - component: {fileID: 1799891597}
   - component: {fileID: 1799891598}
+  - component: {fileID: 1799891597}
   m_Layer: 9
   m_Name: Car (2)
   m_TagString: Car
@@ -13789,7 +13789,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1799891590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c8ef35b46f830449300e366ff2d85c, type: 3}
+  m_Script: {fileID: 11500000, guid: 773774659621f7b4bb564f849e882bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Image1: {fileID: 969151260}

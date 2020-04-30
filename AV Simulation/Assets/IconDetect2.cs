@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IconDetect1 : MonoBehaviour
+public class IconDetect2 : MonoBehaviour
 {
     //detected
     public GameObject Image1;
@@ -16,7 +16,7 @@ public class IconDetect1 : MonoBehaviour
     public GameObject Image5;
     public GameObject Image6;
 
-    public static int imValue=0;
+    public static int imValue = 0;
     private void Start()
     {
         Image1.SetActive(false);
@@ -42,7 +42,7 @@ public class IconDetect1 : MonoBehaviour
             Image6.SetActive(false);
 
         }
-        else if(imValue == 2)
+        else if (imValue == 2)
         {
             Image1.SetActive(false);
             Image2.SetActive(false);
@@ -52,7 +52,7 @@ public class IconDetect1 : MonoBehaviour
             Image3.SetActive(true);
             Image4.SetActive(true);
         }
-        else if(imValue == 3)
+        else if (imValue == 3)
         {
             Image1.SetActive(false);
             Image2.SetActive(false);
@@ -71,6 +71,6 @@ public class IconDetect1 : MonoBehaviour
             Image5.SetActive(false);
             Image6.SetActive(false);
         }
-        
+
     }
 }
