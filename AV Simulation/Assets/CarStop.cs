@@ -321,6 +321,95 @@ public class CarStop : MonoBehaviour
             {
                 IconDetect2.imValue = 3;
             }
+        }
+        else if (carName == "Car (3)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect3.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect3.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect3.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (4)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect4.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect4.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect4.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (5)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect5.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect5.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect5.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (6)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect6.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect6.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect6.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (7)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect7.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect7.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect7.imValue = 3;
+            }
 
         }
 
@@ -340,7 +429,31 @@ public class CarStop : MonoBehaviour
             IconDetect2.imValue = 0;
 
         }
+        else if (carName == "Car (3)")
+        {
+            IconDetect3.imValue = 0;
 
+        }
+        else if (carName == "Car (4)")
+        {
+            IconDetect4.imValue = 0;
+
+        }
+        else if (carName == "Car (5)")
+        {
+            IconDetect5.imValue = 0;
+
+        }
+        else if (carName == "Car (6)")
+        {
+            IconDetect6.imValue = 0;
+
+        }
+        else if (carName == "Car (7)")
+        {
+            IconDetect7.imValue = 0;
+
+        }
 
     }
 
@@ -382,7 +495,96 @@ public class CarStop : MonoBehaviour
             }
 
         }
+        else if (carName == "Car (3)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect3.imValue = 1;
 
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect3.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect3.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (4)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect4.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect4.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect4.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (5)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect5.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect5.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect5.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (6)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect6.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect6.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect6.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (7)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect7.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect7.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect7.imValue = 3;
+            }
+
+        }
 
     }
 
