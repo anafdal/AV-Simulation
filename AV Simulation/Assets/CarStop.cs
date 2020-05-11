@@ -137,24 +137,9 @@ public class CarStop : MonoBehaviour
                 else if (hit.transform.tag == "Car")//detects other car in front
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
-
                     float distance = Vector3.Distance(transform.position, stopdestination);// calculate distance between objects
 
-
-                    if (distance < stopDistance_Car)//stop the agnet behind the other car at this distance
-                    {
-
-                        agent.velocity = Vector3.zero;
-                        agent.isStopped = true;
-
-                    }
-                    else
-                    {
-                        agent.SetDestination(agent.steeringTarget);//once car in front moves, resume path
-                        agent.isStopped = false;
-                    }
-
-
+                    StopDecision(distance, stopDistance_Car);
 
                 }
                 else if (hit.transform.tag == "Protector")//detect a person
@@ -162,23 +147,8 @@ public class CarStop : MonoBehaviour
                     
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
-
-
-                    if (distance < stopDistance_Person)//stop at this distance
-                    {
-
-                        agent.velocity = Vector3.zero;
-                        Debug.Log("Stop Here");
-                         
-
-                    }
-                    else
-                    {
-                        
-                        agent.SetDestination(agent.steeringTarget);//resume path once person moves away
-                     
-                    }
-
+               
+                    StopDecision(distance, stopDistance_Person);
 
                 }
 
@@ -285,10 +255,31 @@ public class CarStop : MonoBehaviour
         
     }
 
+
+    public void StopDecision(float distance,float stopDistance)
+    {
+        if (distance < stopDistance)//stop the agnet behind the other car at this distance
+        {
+
+            agent.velocity = Vector3.zero;
+            agent.isStopped = true;
+
+        }
+        else
+        {
+            agent.SetDestination(agent.steeringTarget);//once car in front moves, resume path
+            agent.isStopped = false;
+        }
+
+
+    }
+
+
+
     public void ChangeIcon(string carName,float distance)//for stop sings
     {
 
-        if (carName == "Car (1)")
+       if (carName == "Car (1)")
         {
             if (35 < distance && distance < 100 && agent.isStopped == false)
             {
@@ -412,7 +403,24 @@ public class CarStop : MonoBehaviour
             }
 
         }
+        else if (carName == "Car (8)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false)
+            {
+                IconDetect8.imValue = 1;
 
+            }
+            else if (agent.isStopped == true && distance <= 35)
+            {
+                IconDetect8.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20)
+            {
+                IconDetect8.imValue = 3;
+            }
+
+        }
 
     }
 
@@ -452,6 +460,11 @@ public class CarStop : MonoBehaviour
         else if (carName == "Car (7)")
         {
             IconDetect7.imValue = 0;
+
+        }
+        else if (carName == "Car (8)")
+        {
+            IconDetect8.imValue = 0;
 
         }
 
@@ -582,6 +595,24 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect7.imValue = 3;
+            }
+
+        }
+        else if (carName == "Car (8)")
+        {
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+            {
+                IconDetect8.imValue = 1;
+
+            }
+            else if (agent.isStopped == true && distance <= 35 && red == true)
+            {
+                IconDetect8.imValue = 2;
+                //Debug.Log(imValue);
+            }
+            else if (agent.isStopped == false && distance <= 20 && red == false)
+            {
+                IconDetect8.imValue = 3;
             }
 
         }
