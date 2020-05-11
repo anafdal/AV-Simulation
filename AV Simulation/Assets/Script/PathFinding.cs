@@ -40,6 +40,7 @@ public class PathFinding : MonoBehaviour
             else if(points[destPoint].gameObject.name == "Waypoint (1.1)")
             {
                 agent.Warp(points[destPoint].position);//warp the agent at waypoint(12) immediately
+                agent.transform.rotation = points[destPoint].localRotation;
             }
 
 
