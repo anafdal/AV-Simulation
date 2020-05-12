@@ -17,6 +17,7 @@ public class CarStop : MonoBehaviour
     public float stopDistance_Car = 20.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 70.0f;//distance to stop behind person
+    private bool value = false;
 
     //raycast
     [SerializeField]
@@ -166,18 +167,17 @@ public class CarStop : MonoBehaviour
 
 
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
-                    ChangeIcon2(agent.name, distance, red.enabled);//only if light is red
-
+                    
 
                     if (red.enabled == true)//if red is on
                     {
+                        value = true;
 
-                    
                         if (distance < stopDistance_Stop)
                         {
                            
                             agent.isStopped = true;//agent will stop
-
+                            
 
                         }
                     }
@@ -187,6 +187,13 @@ public class CarStop : MonoBehaviour
                         
                         agent.isStopped = false;//agent will move
                        
+                    }
+
+
+                    if (value == true)
+                    {
+                        ChangeIcon2(agent.name, distance, red.enabled);//only if light is red
+                        
                     }
 
 
@@ -277,7 +284,7 @@ public class CarStop : MonoBehaviour
 
 
 
-    public void ChangeIcon(string carName,float distance)//for stop sings
+    public void ChangeIcon(string carName,float distance)//for stop signs and passerbys
     {
 
        if (carName == "Car (1)")
@@ -295,6 +302,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect1.imValue = 3;
+
             }
         }
         else if(carName== "Car (2)")
@@ -425,7 +433,7 @@ public class CarStop : MonoBehaviour
 
     }
 
-    public void StopIcon(string carName)
+    public void StopIcon(string carName)//no icons
     {
 
         if (carName == "Car (1)")
@@ -489,7 +497,9 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red==false)
             {
                 IconDetect1.imValue = 3;
+                value = false;
             }
+            
         }
         else if (carName == "Car (2)")
         {
@@ -506,6 +516,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect2.imValue = 3;
+                value = false;
             }
 
         }
@@ -524,6 +535,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect3.imValue = 3;
+                value = false;
             }
 
         }
@@ -542,6 +554,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect4.imValue = 3;
+                value = false;
             }
 
         }
@@ -560,6 +573,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect5.imValue = 3;
+                value = false;
             }
 
         }
@@ -578,6 +592,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect6.imValue = 3;
+                value = false;
             }
 
         }
@@ -596,6 +611,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect7.imValue = 3;
+                value = false;
             }
 
         }
@@ -614,6 +630,7 @@ public class CarStop : MonoBehaviour
             else if (agent.isStopped == false && distance <= 20 && red == false)
             {
                 IconDetect8.imValue = 3;
+                value = false;
             }
 
         }
