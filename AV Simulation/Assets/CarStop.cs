@@ -147,8 +147,10 @@ public class CarStop : MonoBehaviour
                     
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
-               
+                    ChangeIcon(agent.name, distance);
+
                     StopDecision(distance, stopDistance_Person);
+                    
 
                 }
 
@@ -183,7 +185,6 @@ public class CarStop : MonoBehaviour
                     else if (green.enabled == true)//if green is on
                     {
                         
-
                         agent.isStopped = false;//agent will move
                        
                     }
