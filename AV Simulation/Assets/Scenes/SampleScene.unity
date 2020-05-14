@@ -528,6 +528,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &42985774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,6 +1381,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &169953925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2757,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &351102220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5357,6 +5360,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &734455137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5606,6 +5610,7 @@ GameObject:
   - component: {fileID: 748301080}
   - component: {fileID: 748301087}
   - component: {fileID: 748301085}
+  - component: {fileID: 748301088}
   m_Layer: 9
   m_Name: Car (3)
   m_TagString: Car
@@ -5779,6 +5784,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &748301087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5797,6 +5803,30 @@ MonoBehaviour:
   Image4: {fileID: 1739653454}
   Image5: {fileID: 390913717}
   Image6: {fileID: 1362872730}
+--- !u!114 &748301088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748301078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e708d9b0aa1864f9af5132c983d7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoints:
+  - {fileID: 1371592362}
+  - {fileID: 1027085927}
+  cars:
+  - {fileID: 1639549894}
+  - {fileID: 1799891590}
+  - {fileID: 748301078}
+  - {fileID: 42985765}
+  - {fileID: 169953916}
+  - {fileID: 351102211}
+  - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!1 &758708709
 GameObject:
   m_ObjectHideFlags: 0
@@ -10435,6 +10465,7 @@ MonoBehaviour:
   - {fileID: 42985765}
   - {fileID: 169953916}
   - {fileID: 351102211}
+  - {fileID: 734455128}
   - {fileID: 1301780870}
 --- !u!195 &1301780875
 NavMeshAgent:
@@ -13857,6 +13888,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!114 &1639549903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15864,6 +15896,7 @@ MonoBehaviour:
   - {fileID: 169953916}
   - {fileID: 351102211}
   - {fileID: 734455128}
+  - {fileID: 1301780870}
 --- !u!1001 &1809693463
 PrefabInstance:
   m_ObjectHideFlags: 0

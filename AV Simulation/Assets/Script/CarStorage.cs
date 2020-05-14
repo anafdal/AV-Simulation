@@ -35,7 +35,7 @@ public class CarStorage : MonoBehaviour
 
         for (int i = 0; i < cars.Length - 1; i++)
         {
-            if (cars[cars.Length - 1].activeInHierarchy != true || cars[0].activeInHierarchy !=true)//check if some cars are not active
+            if (cars[cars.Length - 1].activeInHierarchy != true)//check if some cars are not active
             {
                 value = false;
             }
