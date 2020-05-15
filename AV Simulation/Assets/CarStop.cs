@@ -14,7 +14,7 @@ public class CarStop : MonoBehaviour
     //settings
     public static bool stop = false;
     public float time = 5.0f;
-    public float stopDistance_Car = 20.0f;//distance to stop behind another 
+    public float stopDistance_Car = 30.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 70.0f;//distance to stop behind person
     private bool value = false;
