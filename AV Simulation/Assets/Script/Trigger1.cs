@@ -5,14 +5,6 @@ using UnityEngine;
 public class Trigger1 : MonoBehaviour
 {
     public static bool needtoStop1 = false;
-    public static string parent;
-
-    void Start()
-    {
-        parent = this.transform.parent.name; 
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -46,7 +38,6 @@ public class Trigger1 : MonoBehaviour
     {
 
 
-        //exit simulation
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 #if UNITY_EDITOR
