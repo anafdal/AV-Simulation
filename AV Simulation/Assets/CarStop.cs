@@ -89,9 +89,6 @@ public class CarStop : MonoBehaviour
 
                 agent.isStopped = false;
                 agent.SetDestination(agent.steeringTarget);
-
-                //Debug.Log(agent+": "+agent.isOnNavMesh);
-                //transform.LookAt(agent.steeringTarget);
             }
 
             
