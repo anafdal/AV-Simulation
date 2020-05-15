@@ -42,61 +42,98 @@ public class CarStop : MonoBehaviour
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
             Raycasting();
-       
 
-          
-
-            if (stop == true)//if raycast does encounter anything
-            {
-
-                if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
-                {
-                    StopSign();
-
-                }
-                else if (hit.transform.tag == "Car")//detects other car in front
-                {
-                    stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
-                    float distance = Vector3.Distance(transform.position, stopdestination);// calculate distance between objects
-
-                    StopDecision(distance, stopDistance_Car);
-
-                }
-                else if (hit.transform.tag == "Protector")//detect a person
-                {
-
-                    float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
-                    ChangeIcon(agent.name, distance);
-
-                    StopDecision(distance, stopDistance_Person);
-
-
-                }
-
-                else if (hit.transform.tag == "Stoplight")//encounters stoplight
-                {
-                    StopLight();
-
-                }
-
-
-                stop = false;//nothing is being detected by raycast anymore
-
-
-            }
-            else if (stop == false)//if nothing is being detected car will continue on its path
-            {
-
-                agent.isStopped = false;
-                agent.SetDestination(agent.steeringTarget);
-            }
-
-            
+            StopCar();
 
         }
 
+    }
 
 
+    private void Raycasting()
+    {
+        Vector3 origin = new Vector3(transform.position.x, -2.0f, transform.position.z);//origin of raycast from center of cube
+        Vector3 direction = transform.forward;//direction of raycast
+
+        Ray ray = new Ray(origin, direction);//car raycast
+
+        if (Physics.Raycast(ray, out raycastHit, maxDistance, layerMask))
+        {
+
+            stop = true;//has encountered object of interest
+            hit = raycastHit.transform.gameObject;
+
+            //hit.GetComponent<Renderer>().material.color = Color.red;//change color
+            //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
+            //Debug.Log(agent.transform.name + " " + hit.transform.tag);
+
+            if (hit.transform.tag == "Stop")
+            {//might need to make separate value for each of this, where you separate each thing and stop tag
+
+                stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
+                float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
+
+                ChangeIcon(agent.name, distance);
+
+
+            }
+
+
+        }
+        else//good here
+        {
+
+
+            StopIcon(agent.name);
+
+        }
+    }
+    private void StopCar()//all the stopping decisions are made here
+    {
+        if (stop == true)//if raycast does encounter anything
+        {
+
+            if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
+            {
+                StopSign();
+
+            }
+            else if (hit.transform.tag == "Car")//detects other car in front
+            {
+                stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
+                float distance = Vector3.Distance(transform.position, stopdestination);// calculate distance between objects
+
+                StopDecision(distance, stopDistance_Car);
+
+            }
+            else if (hit.transform.tag == "Protector")//detect a person
+            {
+
+                float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
+                ChangeIcon(agent.name, distance);
+
+                StopDecision(distance, stopDistance_Person);
+
+
+            }
+
+            else if (hit.transform.tag == "Stoplight")//encounters stoplight
+            {
+                StopLight();
+
+            }
+
+
+            stop = false;//nothing is being detected by raycast anymore
+
+
+        }
+        else if (stop == false)//if nothing is being detected car will continue on its path
+        {
+
+            //agent.isStopped = false;
+            agent.SetDestination(agent.steeringTarget);
+        }
     }
 
     private void StopLight()//for the stoplights only
@@ -140,6 +177,7 @@ public class CarStop : MonoBehaviour
 
         }
     }
+
 
     private void StopSign()//for the stopsigns only
     {
@@ -191,44 +229,7 @@ public class CarStop : MonoBehaviour
         }
     }
 
-    private void Raycasting()
-    {
-        Vector3 origin = new Vector3(transform.position.x, -2.0f, transform.position.z);//origin of raycast from center of cube
-        Vector3 direction = transform.forward;//direction of raycast
-
-        Ray ray = new Ray(origin, direction);//car raycast
-
-        if (Physics.Raycast(ray, out raycastHit, maxDistance, layerMask))
-        {
-
-            stop = true;//has encountered object of interest
-            hit = raycastHit.transform.gameObject;
-
-            //hit.GetComponent<Renderer>().material.color = Color.red;//change color
-            //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-             Debug.Log(agent.transform.name+" "+hit.transform.tag);
-
-            if (hit.transform.tag == "Stop")
-            {//might need to make separate value for each of this, where you separate each thing and stop tag
-
-                stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
-                float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
-
-                ChangeIcon(agent.name, distance);
-
-
-            }
-
-
-        }
-        else//good here
-        {
-
-
-            StopIcon(agent.name);
-
-        }
-    }
+  
 
     IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
     {
@@ -288,6 +289,8 @@ public class CarStop : MonoBehaviour
 
     }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////put this in another script
 
 
     public void ChangeIcon(string carName,float distance)//for stop signs and passerbys
