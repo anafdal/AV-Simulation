@@ -589,7 +589,7 @@ public class CarStop : MonoBehaviour
 
     }
 
-    public void StopIcon2(string carName)
+    public void StopIcon2(string carName)//for stoplights
     {
 
         if (carName == "Car (1)" && value1 == true)
