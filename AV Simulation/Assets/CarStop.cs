@@ -89,52 +89,41 @@ public class CarStop : MonoBehaviour
 
                 if (hit.gameObject.transform.tag == "Stop")//encounters stop line for simple stop sign
                 {
-                    
+
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
-                  
+
 
                     //stopping
-                    if (distance < stopDistance_Stop){//if no one is crossing, continue usual routine
+                    if (distance < stopDistance_Stop)
+                    {//if no one is crossing, continue usual routine
                         //imValue = 2;////can cross
 
 
                         agent.isStopped = true;
 
-                       
+
                         //determine if there is person or not crossing
-                        if (Trigger1.needtoStop1 == true && hit.transform.name== "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
+                        if (Trigger1.needtoStop1 == true && hit.transform.name == "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
                         {
 
                             stoptime_Car1 = false;//stop at first stopline
-                            //Debug.Log("Here 2 " + stoptime_Car1);
-                            
+                                                  //Debug.Log("Here 2 " + stoptime_Car1);
+                           
+
 
                         }
                         else if (Trigger2.needtoStop2 == true && hit.transform.name == "Stopline (6)(Stop)")
                         {
 
                             stoptime_Car2 = false;//stop at second stopline
-                            //Debug.Log("Here 6" + stoptime_Car2);
-                            
+                                                  //Debug.Log("Here 6" + stoptime_Car2);
+
                         }
 
                     }
 
-              
-
-                    //restarting
-                    if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
-                    {                  
-                        StartCoroutine(CarCoroutine1());
-                      
-                    }
-                    else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
-                    {
-                       
-                        StartCoroutine(CarCoroutine2());
-                       
-                    }                  
+                    CarDecision();
 
                 }
                 else if (hit.transform.tag == "Car")//detects other car in front
@@ -221,30 +210,52 @@ public class CarStop : MonoBehaviour
 
     }
 
+    private void CarDecision()
+    {
+        //restarting
+        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
+        {
+            StartCoroutine(CarCoroutine1());
 
+        }
+        else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
+        {
+
+            StartCoroutine(CarCoroutine2());
+
+        }
+
+    }
 
     IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
     {
-        if (stoptime_Car1 == false)
+      
+            if (stoptime_Car1 == false)
+            {
+                yield return new WaitForSeconds(1.0f);
+
+            }
+          else
+          {
+          
+                yield return new WaitForSeconds(time);
+
+          }
+
+        if (Trigger1.needtoStop1 == false)//one last check
         {
-            yield return new WaitForSeconds(1.0f);
-            
+            agent.isStopped = false;
         }
         else
         {
-            
-            yield return new WaitForSeconds(time);
-            // Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-            
+            agent.isStopped = true;
         }
-        
-        agent.isStopped = false;
-        
+                        
     }
 
     IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
     {
-        
+       
         if (stoptime_Car2 == false)
         {
             yield return new WaitForSeconds(1.0f);
@@ -257,9 +268,16 @@ public class CarStop : MonoBehaviour
             
         }
 
-        
-        agent.isStopped = false;
-        
+
+        if (Trigger2.needtoStop2 == false)//one last check
+        {
+            agent.isStopped = false;
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+
     }
 
 

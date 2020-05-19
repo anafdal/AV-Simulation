@@ -9,7 +9,7 @@ public class Trigger2 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
             needtoStop2 = true;
         }
 
@@ -18,7 +18,7 @@ public class Trigger2 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
             needtoStop2 = true;
         }
 
@@ -28,7 +28,7 @@ public class Trigger2 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Exit");
+           // Debug.Log("Exit");
             needtoStop2 = false;
 
         }
