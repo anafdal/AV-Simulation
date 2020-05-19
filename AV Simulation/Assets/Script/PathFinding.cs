@@ -80,7 +80,7 @@ public class PathFinding : MonoBehaviour
         }
        else if(Startpoint.name == "Startpoint (2)")
         {
-            destination = 6;//if car starts from Startpoint (2) got to next waypoint 
+            destination = 7;//if car starts from Startpoint (2) got to next waypoint 
         }
 
         return destination;
