@@ -241,8 +241,7 @@ public class CarStop : MonoBehaviour
                 yield return new WaitForSeconds(time);
 
           }
-
-        if (Trigger1.needtoStop1 == false)//one last check
+        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")//one last check
         {
             agent.isStopped = false;
         }
@@ -250,7 +249,8 @@ public class CarStop : MonoBehaviour
         {
             agent.isStopped = true;
         }
-                        
+
+
     }
 
     IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
@@ -265,11 +265,10 @@ public class CarStop : MonoBehaviour
         {
             
             yield return new WaitForSeconds(time);
-            
+
         }
 
-
-        if (Trigger2.needtoStop2 == false)//one last check
+        if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")//one last check
         {
             agent.isStopped = false;
         }
