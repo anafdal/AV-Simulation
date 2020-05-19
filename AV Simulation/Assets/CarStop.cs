@@ -17,7 +17,9 @@ public class CarStop : MonoBehaviour
     public float stopDistance_Car = 30.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 70.0f;//distance to stop behind person
-    private bool value = false;
+    private bool value1 = false;
+    private bool value2 = false;
+    
 
     //raycast
     [SerializeField]
@@ -162,8 +164,8 @@ public class CarStop : MonoBehaviour
                     //child 2 is red light
                     //child 3 is green light
 
-                    Light red = stoplight.transform.Find("red").GetComponent<Light>();
-                    Light green = stoplight.transform.Find("green").GetComponent<Light>();
+                    Light red = stoplight.transform.Find("red light").GetComponent<Light>();
+                    Light green = stoplight.transform.Find("green light").GetComponent<Light>();
 
 
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
@@ -171,7 +173,8 @@ public class CarStop : MonoBehaviour
 
                     if (red.enabled == true)//if red is on
                     {
-                        value = true;
+                        value1 = true;
+                        ChangeIcon2(agent.name, distance, red.enabled);//only if light is red
 
                         if (distance < stopDistance_Stop)
                         {
@@ -184,17 +187,13 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                        
+                        StopIcon2(agent.name, distance, red.enabled);
                         agent.isStopped = false;//agent will move
-                       
-                    }
-
-
-                    if (value == true)
-                    {
-                        ChangeIcon2(agent.name, distance, red.enabled);//only if light is red
                         
                     }
+
+
+                   
 
 
                 }
@@ -482,26 +481,27 @@ public class CarStop : MonoBehaviour
     public void ChangeIcon2(string carName, float distance, bool red)//for stoplights
     {
 
-        if (carName == "Car (1)")
+        if (carName == "Car (1)" && value1 == true)
         {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red==true)
+            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
                 IconDetect1.imValue = 1;
 
             }
-            else if (agent.isStopped == true && distance <= 35  && red==true)
+            else if (agent.isStopped == true && distance <= 35 && red == true)
             {
                 IconDetect1.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red==false)
+            /*else if (agent.isStopped == false)
             {
                 IconDetect1.imValue = 3;
-                value = false;
-            }
-            
+                value1 = false;
+            }*/
         }
-        else if (carName == "Car (2)")
+
+
+        else if (carName == "Car (2)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -513,14 +513,14 @@ public class CarStop : MonoBehaviour
                 IconDetect2.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect2.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (3)")
+        else if (carName == "Car (3)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -532,14 +532,14 @@ public class CarStop : MonoBehaviour
                 IconDetect3.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect3.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (4)")
+        else if (carName == "Car (4)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -551,14 +551,14 @@ public class CarStop : MonoBehaviour
                 IconDetect4.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect4.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (5)")
+        else if (carName == "Car (5)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -570,14 +570,14 @@ public class CarStop : MonoBehaviour
                 IconDetect5.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect5.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (6)")
+        else if (carName == "Car (6)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -589,14 +589,14 @@ public class CarStop : MonoBehaviour
                 IconDetect6.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect6.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (7)")
+        else if (carName == "Car (7)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -608,14 +608,14 @@ public class CarStop : MonoBehaviour
                 IconDetect7.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect7.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
-        else if (carName == "Car (8)")
+        else if (carName == "Car (8)" && value1 == true)
         {
             if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
@@ -627,16 +627,29 @@ public class CarStop : MonoBehaviour
                 IconDetect8.imValue = 2;
                 //Debug.Log(imValue);
             }
-            else if (agent.isStopped == false && distance <= 20 && red == false)
+            else if (agent.isStopped == false && distance <= 20)
             {
                 IconDetect8.imValue = 3;
-                value = false;
+                value1 = false;
             }
 
         }
 
     }
 
+    public void StopIcon2(string carName, float distance, bool red)
+    {
+
+        if (carName == "Car (1)" && value1 == true)
+        {
+             if (agent.isStopped == false)
+            {
+                IconDetect1.imValue = 3;
+                value1 = false;
+            }
+        }
+
+    }
 
 
 }

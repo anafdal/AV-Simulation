@@ -8,13 +8,22 @@ public class LightSwitch0 : MonoBehaviour
     public Light red;
     public float time = 20.0f;//rate to change lights
 
+    public GameObject redSpot;
+    public GameObject greenSpot;
+    public GameObject yellowSpot;
+
 
     void Start()
     {
         green = green.GetComponent<Light>();
         red = red.GetComponent<Light>();
+
         green.enabled = true;
         red.enabled = false;
+
+        yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
+        redSpot.GetComponent<Renderer>().material.color = Color.gray;
+        greenSpot.GetComponent<Renderer>().material.color = Color.green;
     }
 
     // Update is called once per frame
@@ -41,6 +50,9 @@ public class LightSwitch0 : MonoBehaviour
 
         green.enabled = false;
         red.enabled = true;
+
+        redSpot.GetComponent<Renderer>().material.color = Color.red;
+        greenSpot.GetComponent<Renderer>().material.color = Color.gray;
         //Debug.Log("Entered1");
     }
 
@@ -53,6 +65,9 @@ public class LightSwitch0 : MonoBehaviour
 
         green.enabled = true;
         red.enabled = false;
+
+        redSpot.GetComponent<Renderer>().material.color = Color.gray;
+        greenSpot.GetComponent<Renderer>().material.color = Color.green;
         //Debug.Log("Entered2");
     }
 }
