@@ -75,7 +75,7 @@ public class CarStop : MonoBehaviour
             else//good here
             {
 
-
+                
                 StopIcon(agent.name);                  
                
             }
@@ -241,7 +241,8 @@ public class CarStop : MonoBehaviour
                 yield return new WaitForSeconds(time);
 
           }
-        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")//one last check
+
+        if (Trigger1.needtoStop1 == false)//one last check
         {
             agent.isStopped = false;
         }
@@ -268,7 +269,7 @@ public class CarStop : MonoBehaviour
 
         }
 
-        if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")//one last check
+        if (Trigger2.needtoStop2 == false)//one last check
         {
             agent.isStopped = false;
         }
