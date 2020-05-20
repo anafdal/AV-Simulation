@@ -17,7 +17,7 @@ public class Trigger1 : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" )
         {
             //Debug.Log("Enter");
             needtoStop1 = true;
