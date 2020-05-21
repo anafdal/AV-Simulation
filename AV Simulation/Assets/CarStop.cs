@@ -56,7 +56,7 @@ public class CarStop : MonoBehaviour
                 stop = true;//has encountered object of interest
                 hit = raycastHit.transform.gameObject;
 
-                //hit.GetComponent<Renderer>().material.color = Color.red;//change color
+                // hit.GetComponent<Renderer>().material.color = Color.red;//change color
                 //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
                 // Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
@@ -242,13 +242,13 @@ public class CarStop : MonoBehaviour
 
           }
 
-        if (Trigger1.needtoStop1 == false)//one last check
+        if (Trigger1.needtoStop1 == true && agent.isStopped == true)//one last check
         {
-            agent.isStopped = false;
+            agent.isStopped = true;
         }
         else
         {
-            agent.isStopped = true;
+            agent.isStopped = false;
         }
 
 
@@ -269,13 +269,13 @@ public class CarStop : MonoBehaviour
 
         }
 
-        if (Trigger2.needtoStop2 == false)//one last check
+        if (Trigger2.needtoStop2 == true && agent.isStopped == true)//one last check
         {
-            agent.isStopped = false;
+            agent.isStopped = true;
         }
         else
         {
-            agent.isStopped = true;
+            agent.isStopped = false;
         }
 
     }

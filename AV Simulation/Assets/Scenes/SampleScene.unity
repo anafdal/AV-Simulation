@@ -505,7 +505,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &42985773
 MonoBehaviour:
@@ -967,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &126886085
 Transform:
   m_ObjectHideFlags: 0
@@ -976,8 +976,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126886084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.9, y: -2.4, z: 131.5}
-  m_LocalScale: {x: 72.560196, y: 1, z: 1}
+  m_LocalPosition: {x: -72.9, y: -1.7, z: 131.5}
+  m_LocalScale: {x: 72.560196, y: 3.8401058, z: 1}
   m_Children: []
   m_Father: {fileID: 1897908170}
   m_RootOrder: 0
@@ -1002,7 +1002,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126886084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &169953924
 MonoBehaviour:
@@ -2617,7 +2617,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &351102213
 MonoBehaviour:
@@ -3081,7 +3081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &416781272
 Transform:
   m_ObjectHideFlags: 0
@@ -5323,7 +5323,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &734455130
 MonoBehaviour:
@@ -5981,7 +5981,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &748301086
 MonoBehaviour:
@@ -7441,7 +7441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 225
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10648,7 +10648,7 @@ MonoBehaviour:
   stopDistance_Person: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 7936
+    m_Bits: 16128
   maxDistance: 100
 --- !u!114 &1301780873
 MonoBehaviour:
