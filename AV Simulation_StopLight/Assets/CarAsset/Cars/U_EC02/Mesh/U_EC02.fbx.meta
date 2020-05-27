@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: 7552c5850a8e079449e0aef6635a2992
+timeCreated: 1527521601
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ilum
+    100002: //RootNode
+    100004: U_EC02_black_BV
+    100006: U_EC02_brakeLight_ON
+    100008: U_EC02_caliper_FL
+    100010: U_EC02_caliper_FR
+    100012: U_EC02_caliper_RL
+    100014: U_EC02_caliper_RR
+    100016: U_EC02_carDetails
+    100018: U_EC02_carDetails 1
+    100020: U_EC02_carDetails_SW
+    100022: U_EC02_carPaint
+    100024: U_EC02_frontLight_ON
+    100026: U_EC02_indicatorLight_L
+    100028: U_EC02_indicatorLight_R
+    100030: U_EC02_interiorHI
+    100032: U_EC02_Leather
+    100034: U_EC02_Leather_SW
+    100036: U_EC02_lightGlass
+    100038: U_EC02_lights
+    100040: U_EC02_mirror
+    100042: U_EC02_mirror_interior
+    100044: U_EC02_plasticPanel
+    100046: U_EC02_pyramidDash
+    100048: U_EC02_reverseLights
+    100050: U_EC02_Rotor_FL
+    100052: U_EC02_Rotor_FR
+    100054: U_EC02_Rotor_RL
+    100056: U_EC02_Rotor_RR
+    100058: U_EC02_rpmNeedle
+    100060: U_EC02_seatFabric
+    100062: U_EC02_speedNeedle
+    100064: U_EC02_steeringWheel
+    100066: U_EC02_SteerLeather_SW
+    100068: U_EC02_tire_FL
+    100070: U_EC02_tire_FR
+    100072: U_EC02_tire_RL
+    100074: U_EC02_tire_RR
+    100076: U_EC02_transpIcons
+    100078: U_EC02_transpIcons_SW
+    100080: U_EC02_wheel_FL
+    100082: U_EC02_wheel_FR
+    100084: U_EC02_wheel_RL
+    100086: U_EC02_wheel_RR
+    100088: U_EC02_wheelRIM_FL
+    100090: U_EC02_wheelRIM_FR
+    100092: U_EC02_wheelRIM_RL
+    100094: U_EC02_wheelRIM_RR
+    100096: U_EC02_wheels
+    100098: U_EC02_windows
+    100100: U_EC02_collider
+    400000: ilum
+    400002: //RootNode
+    400004: U_EC02_black_BV
+    400006: U_EC02_brakeLight_ON
+    400008: U_EC02_caliper_FL
+    400010: U_EC02_caliper_FR
+    400012: U_EC02_caliper_RL
+    400014: U_EC02_caliper_RR
+    400016: U_EC02_carDetails
+    400018: U_EC02_carDetails 1
+    400020: U_EC02_carDetails_SW
+    400022: U_EC02_carPaint
+    400024: U_EC02_frontLight_ON
+    400026: U_EC02_indicatorLight_L
+    400028: U_EC02_indicatorLight_R
+    400030: U_EC02_interiorHI
+    400032: U_EC02_Leather
+    400034: U_EC02_Leather_SW
+    400036: U_EC02_lightGlass
+    400038: U_EC02_lights
+    400040: U_EC02_mirror
+    400042: U_EC02_mirror_interior
+    400044: U_EC02_plasticPanel
+    400046: U_EC02_pyramidDash
+    400048: U_EC02_reverseLights
+    400050: U_EC02_Rotor_FL
+    400052: U_EC02_Rotor_FR
+    400054: U_EC02_Rotor_RL
+    400056: U_EC02_Rotor_RR
+    400058: U_EC02_rpmNeedle
+    400060: U_EC02_seatFabric
+    400062: U_EC02_speedNeedle
+    400064: U_EC02_steeringWheel
+    400066: U_EC02_SteerLeather_SW
+    400068: U_EC02_tire_FL
+    400070: U_EC02_tire_FR
+    400072: U_EC02_tire_RL
+    400074: U_EC02_tire_RR
+    400076: U_EC02_transpIcons
+    400078: U_EC02_transpIcons_SW
+    400080: U_EC02_wheel_FL
+    400082: U_EC02_wheel_FR
+    400084: U_EC02_wheel_RL
+    400086: U_EC02_wheel_RR
+    400088: U_EC02_wheelRIM_FL
+    400090: U_EC02_wheelRIM_FR
+    400092: U_EC02_wheelRIM_RL
+    400094: U_EC02_wheelRIM_RR
+    400096: U_EC02_wheels
+    400098: U_EC02_windows
+    400100: U_EC02_collider
+    2100000: U_EC02_mirror_shdr
+    2100002: U_EC02_carPaint_shdr
+    2100004: U_EC02_lightGlass_shdr
+    2100006: U_EC02_carDetails_shdr
+    2100008: punto_glass1
+    2100010: U_EC02_pyramid_shdr
+    2100012: U_EC02_transpIcons_shdr
+    2100014: U_EC02_black_BV_shdr
+    2100016: U_EC02_seatFabric_shdr
+    2100018: U_EC02_Leather_shdr
+    2100020: U_EC02_SteerLeather_shdr
+    2100022: U_EC02_plasticPanel_shdr
+    2100024: U_EC02_lights_shdr
+    2100026: U_EC02_wheels_Details_shdr
+    2100028: U_EC02_wheel_shdr_
+    2100030: U_EC02_windows_shdr
+    2300000: U_EC02_black_BV
+    2300002: U_EC02_brakeLight_ON
+    2300004: U_EC02_caliper_FL
+    2300006: U_EC02_caliper_FR
+    2300008: U_EC02_caliper_RL
+    2300010: U_EC02_caliper_RR
+    2300012: U_EC02_carDetails
+    2300014: U_EC02_carDetails 1
+    2300016: U_EC02_carDetails_SW
+    2300018: U_EC02_carPaint
+    2300020: U_EC02_frontLight_ON
+    2300022: U_EC02_indicatorLight_L
+    2300024: U_EC02_indicatorLight_R
+    2300026: U_EC02_Leather
+    2300028: U_EC02_Leather_SW
+    2300030: U_EC02_lightGlass
+    2300032: U_EC02_lights
+    2300034: U_EC02_mirror
+    2300036: U_EC02_mirror_interior
+    2300038: U_EC02_plasticPanel
+    2300040: U_EC02_pyramidDash
+    2300042: U_EC02_reverseLights
+    2300044: U_EC02_Rotor_FL
+    2300046: U_EC02_Rotor_FR
+    2300048: U_EC02_Rotor_RL
+    2300050: U_EC02_Rotor_RR
+    2300052: U_EC02_rpmNeedle
+    2300054: U_EC02_seatFabric
+    2300056: U_EC02_speedNeedle
+    2300058: U_EC02_SteerLeather_SW
+    2300060: U_EC02_tire_FL
+    2300062: U_EC02_tire_FR
+    2300064: U_EC02_tire_RL
+    2300066: U_EC02_tire_RR
+    2300068: U_EC02_transpIcons
+    2300070: U_EC02_transpIcons_SW
+    2300072: U_EC02_wheelRIM_FL
+    2300074: U_EC02_wheelRIM_FR
+    2300076: U_EC02_wheelRIM_RL
+    2300078: U_EC02_wheelRIM_RR
+    2300080: U_EC02_windows
+    2300082: U_EC02_collider
+    3300000: U_EC02_black_BV
+    3300002: U_EC02_brakeLight_ON
+    3300004: U_EC02_caliper_FL
+    3300006: U_EC02_caliper_FR
+    3300008: U_EC02_caliper_RL
+    3300010: U_EC02_caliper_RR
+    3300012: U_EC02_carDetails
+    3300014: U_EC02_carDetails 1
+    3300016: U_EC02_carDetails_SW
+    3300018: U_EC02_carPaint
+    3300020: U_EC02_frontLight_ON
+    3300022: U_EC02_indicatorLight_L
+    3300024: U_EC02_indicatorLight_R
+    3300026: U_EC02_Leather
+    3300028: U_EC02_Leather_SW
+    3300030: U_EC02_lightGlass
+    3300032: U_EC02_lights
+    3300034: U_EC02_mirror
+    3300036: U_EC02_mirror_interior
+    3300038: U_EC02_plasticPanel
+    3300040: U_EC02_pyramidDash
+    3300042: U_EC02_reverseLights
+    3300044: U_EC02_Rotor_FL
+    3300046: U_EC02_Rotor_FR
+    3300048: U_EC02_Rotor_RL
+    3300050: U_EC02_Rotor_RR
+    3300052: U_EC02_rpmNeedle
+    3300054: U_EC02_seatFabric
+    3300056: U_EC02_speedNeedle
+    3300058: U_EC02_SteerLeather_SW
+    3300060: U_EC02_tire_FL
+    3300062: U_EC02_tire_FR
+    3300064: U_EC02_tire_RL
+    3300066: U_EC02_tire_RR
+    3300068: U_EC02_transpIcons
+    3300070: U_EC02_transpIcons_SW
+    3300072: U_EC02_wheelRIM_FL
+    3300074: U_EC02_wheelRIM_FR
+    3300076: U_EC02_wheelRIM_RL
+    3300078: U_EC02_wheelRIM_RR
+    3300080: U_EC02_windows
+    3300082: U_EC02_collider
+    4300000: U_EC02_mirror
+    4300002: U_EC02_carPaint
+    4300004: U_EC02_lightGlass
+    4300006: U_EC02_carDetails
+    4300008: U_EC02_lights
+    4300010: U_EC02_windows
+    4300012: U_EC02_mirror_interior
+    4300014: U_EC02_pyramidDash
+    4300016: U_EC02_rpmNeedle
+    4300018: U_EC02_speedNeedle
+    4300020: U_EC02_black_BV
+    4300022: U_EC02_seatFabric
+    4300024: U_EC02_Leather
+    4300026: U_EC02_carDetails_SW
+    4300028: U_EC02_SteerLeather_SW
+    4300030: U_EC02_Leather_SW
+    4300032: U_EC02_transpIcons_SW
+    4300034: U_EC02_transpIcons
+    4300036: U_EC02_plasticPanel
+    4300038: U_EC02_carDetails
+    4300040: U_EC02_frontLight_ON
+    4300042: U_EC02_indicatorLight_L
+    4300044: U_EC02_indicatorLight_R
+    4300046: U_EC02_brakeLight_ON
+    4300048: U_EC02_reverseLights
+    4300050: U_EC02_Rotor_RL
+    4300052: U_EC02_tire_RL
+    4300054: U_EC02_caliper_RL
+    4300056: U_EC02_wheelRIM_RL
+    4300058: U_EC02_Rotor_FL
+    4300060: U_EC02_tire_FL
+    4300062: U_EC02_caliper_FL
+    4300064: U_EC02_wheelRIM_FL
+    4300066: U_EC02_Rotor_RR
+    4300068: U_EC02_tire_RR
+    4300070: U_EC02_caliper_RR
+    4300072: U_EC02_wheelRIM_RR
+    4300074: U_EC02_Rotor_FR
+    4300076: U_EC02_tire_FR
+    4300078: U_EC02_caliper_FR
+    4300080: U_EC02_wheelRIM_FR
+    4300082: U_EC02_collider
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_Leather_shdr
+    second: {fileID: 2100000, guid: 89c165490eea1504889c52c95903d541, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_SteerLeather_shdr
+    second: {fileID: 2100000, guid: 8bcdfaef8dd3fe44d93d14214e4ad0e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_black_BV_shdr
+    second: {fileID: 2100000, guid: daf606835f89d504480ca322a3e237b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_carDetails_shdr
+    second: {fileID: 2100000, guid: 3d2cce469630244439c4149a56b14c9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_carPaint_shdr
+    second: {fileID: 2100000, guid: cbcbd060dbc92dd41a4496f43761dfb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_lightGlass_shdr
+    second: {fileID: 2100000, guid: 1a58716bf8750244db96df7931b9eb5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_lights_shdr
+    second: {fileID: 2100000, guid: fe73bbcda17b49d4383aafa3f049ad96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_mirror_shdr
+    second: {fileID: 2100000, guid: 1ed15a26e8d17eb49b1a9cbb5c6ee8db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_plasticPanel_shdr
+    second: {fileID: 2100000, guid: a99de01298362e54aba3849e30fa910d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_pyramid_shdr
+    second: {fileID: 2100000, guid: 492f29ba887de5b4d8ec4a5836c0ae04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_seatFabric_shdr
+    second: {fileID: 2100000, guid: 590fc0460889ca343ac97031818a07fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_transpIcons_shdr
+    second: {fileID: 2100000, guid: 396caeb764ba35b40a7aba916a0b00e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_wheel_shdr_
+    second: {fileID: 2100000, guid: 41d857811ee2f0544a8aed11febfa2ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_wheels_Details_shdr
+    second: {fileID: 2100000, guid: b0e6f37164c477745b36e8025329690f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: U_EC02_windows_shdr
+    second: {fileID: 2100000, guid: e94ca242b2ae6fd48ae00ad9bc9aee48, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 3.989
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
