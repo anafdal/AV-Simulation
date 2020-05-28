@@ -192,7 +192,8 @@ public class CarStop : MonoBehaviour
                 else if (hit.transform.tag == "Check")//prevent the agent froms dtopping in the midddle of the crossroad if light turns red
                 {
                     agent.isStopped = false;//agent will move
-                    Debug.Log("Hit");
+                    agent.SetDestination(agent.steeringTarget);
+                    Debug.Log(agent.name+": Hit");
                 }
 
 
