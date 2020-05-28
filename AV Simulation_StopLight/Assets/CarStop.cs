@@ -27,7 +27,7 @@ public class CarStop : MonoBehaviour
     public float maxDistance = 100.0f;//raycast can detect anything with 100 units. In this simulation 100 units=10 meters.
     RaycastHit raycastHit;//hit
     GameObject hit;
-
+    //Vector3 color;
 
     //used for Images
     //public static int imValue=0;
@@ -36,6 +36,8 @@ public class CarStop : MonoBehaviour
     {
         agent = agent.GetComponent<NavMeshAgent>();
 
+        //test
+       // color = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
     }
 
     void Update()
@@ -56,9 +58,9 @@ public class CarStop : MonoBehaviour
                 stop = true;//has encountered object of interest
                 hit = raycastHit.transform.gameObject;
 
-                // hit.GetComponent<Renderer>().material.color = Color.red;//change color
-                //Debug.DrawRay(origin, direction * maxDistance, Color.red);//draw it out
-                // Debug.Log(agent.transform.name+" "+hit.transform.tag);
+                hit.GetComponent<Renderer>().material.color = Color.red;//change color
+                Debug.DrawRay(origin, direction * maxDistance, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));//draw it out
+                //Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
                  if (hit.transform.tag == "Stop") {//might need to make separate value for each of this, where you separate each thing and stop tag
 
@@ -158,20 +160,25 @@ public class CarStop : MonoBehaviour
 
 
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
+
+                    
                     
 
                     if (red.enabled == true)//if red is on
                     {
                         value1 = true;
                         IconUi.ChangeIcon2(agent.name, distance, red.enabled, value1, agent);//only if light is red
+                        //Debug.Log(agent.name+" :"+distance);
 
-                        if (distance < stopDistance_Stop)
+
+                        if (distance<stopDistance_Stop)
                         {
-                           
+
                             agent.isStopped = true;//agent will stop
-                            
+
 
                         }
+                       
                     }
 
                     else if (green.enabled == true)//if green is on
@@ -181,10 +188,11 @@ public class CarStop : MonoBehaviour
                         
                     }
 
-
-                   
-
-
+                }
+                else if (hit.transform.tag == "Check")//prevent the agent froms dtopping in the midddle of the crossroad if light turns red
+                {
+                    agent.isStopped = false;//agent will move
+                    Debug.Log("Hit");
                 }
 
 
