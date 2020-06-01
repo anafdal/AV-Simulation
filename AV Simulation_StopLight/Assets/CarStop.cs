@@ -69,7 +69,7 @@ public class CarStop : MonoBehaviour
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
 
-                    IconUi.ChangeIcon(agent.name, distance,agent);
+                    IconUi.ChangeIcon(distance,agent);
 
 
                  }
@@ -80,7 +80,7 @@ public class CarStop : MonoBehaviour
             {
 
                 
-                IconUi.StopIcon(agent.name, agent);                  
+                IconUi.StopIcon(agent);                  
                
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
@@ -143,7 +143,7 @@ public class CarStop : MonoBehaviour
                     
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
-                    IconUi.ChangeIcon(agent.name, distance, agent);
+                    IconUi.ChangeIcon(distance, agent);
 
                     StopDecision(distance, stopDistance_Person);
                     
@@ -169,7 +169,7 @@ public class CarStop : MonoBehaviour
                     if (red.enabled == true)//if red is on
                     {
                         value1 = true;
-                        IconUi.ChangeIcon2(agent.name, distance, red.enabled, value1, agent);//only if light is red
+                        IconUi.ChangeIcon2(distance, red.enabled, value1, agent);//only if light is red
                         //Debug.Log(agent.name+" :"+distance);
 
 
@@ -185,7 +185,7 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                        IconUi.StopIcon2(agent.name, value1, agent);
+                        IconUi.StopIcon2(value1, agent);
                         agent.isStopped = false;//agent will move
                         
                     }

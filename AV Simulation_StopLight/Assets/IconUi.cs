@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class IconUi : MonoBehaviour
 {
-    public static void ChangeIcon(string carName, float distance, NavMeshAgent agent)//for stop signs and passerbys
+    public static void ChangeIcon(float distance, NavMeshAgent agent)//for stop signs and passerbys
     {
         IconDetect detect=agent.gameObject.GetComponent<IconDetect>();
 
@@ -30,7 +30,7 @@ public class IconUi : MonoBehaviour
 
     }
 
-    public static void StopIcon(string carName, NavMeshAgent agent)//no icons
+    public static void StopIcon(NavMeshAgent agent)//no icons
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
@@ -38,7 +38,7 @@ public class IconUi : MonoBehaviour
 
     }
 
-    public static void ChangeIcon2(string carName, float distance, bool red, bool value1, NavMeshAgent agent)//for stoplights
+    public static void ChangeIcon2(float distance, bool red, bool value1, NavMeshAgent agent)//for stoplights
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
@@ -59,7 +59,7 @@ public class IconUi : MonoBehaviour
 
     }
 
-    public static void StopIcon2(string carName, bool value1, NavMeshAgent agent)//for stoplights
+    public static void StopIcon2(bool value1, NavMeshAgent agent)//for stoplights
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
