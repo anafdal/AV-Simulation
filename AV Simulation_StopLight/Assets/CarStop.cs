@@ -43,6 +43,8 @@ public class CarStop : MonoBehaviour
     void Update()
     {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Raycast
+       
+     
 
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
@@ -78,7 +80,7 @@ public class CarStop : MonoBehaviour
             {
 
                 
-                IconUi.StopIcon(agent.name);                  
+                IconUi.StopIcon(agent.name, agent);                  
                
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
