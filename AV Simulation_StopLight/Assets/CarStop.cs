@@ -9,7 +9,9 @@ public class CarStop : MonoBehaviour
     public NavMeshAgent agent;
     private Vector3 stopdestination;//original destination/target
     private bool stoptime_Car1 = true;//needed so car doesnt have to wait right after person has moved the crosswalk
-     private bool stoptime_Car2 = true;//needed so car doesnt have to wait right after person has moved the crosswalk
+    private bool stoptime_Car2 = true;//needed so car doesnt have to wait right after person has moved the crosswalk
+    private bool stoptime_Car3 = true;
+    private bool stoptime_Car4 = true;
 
     //settings
     public static bool stop = false;
@@ -170,17 +172,11 @@ public class CarStop : MonoBehaviour
                     {
                         value1 = true;
                         IconUi.ChangeIcon2(distance, red.enabled, value1, agent);//only if light is red
-                        //Debug.Log(agent.name+" :"+distance);
+                                                                                 //Debug.Log(agent.name+" :"+distance);
 
 
-                        if (distance<stopDistance_Stop)
-                        {
+                        StopLightTurn(distance);
 
-                            agent.isStopped = true;//agent will stop
-
-
-                        }
-                       
                     }
 
                     else if (green.enabled == true)//if green is on
@@ -195,7 +191,7 @@ public class CarStop : MonoBehaviour
                 {
                     agent.isStopped = false;//agent will move
                     agent.SetDestination(agent.steeringTarget);
-                    Debug.Log(agent.name+": Hit");
+                    //Debug.Log(agent.name+": Hit");
                 }
 
 
@@ -221,6 +217,53 @@ public class CarStop : MonoBehaviour
 
     }
 
+    private void StopLightTurn(float distance)///stoplight example
+    {
+        if (distance < stopDistance_Stop)
+        {
+
+            //turn right
+            if (agent.name == "Car (4)" || agent.name == "Car (3)" || agent.name == "Car (6)" || agent.name == "Car (7)")
+            {
+                //Debug.Log(agent.name+" will turn");
+
+                if (hit.name == "Stoplight A")
+                {
+                    agent.isStopped = true;
+
+                    if (TriggerA.needtoStop == true)
+                    {
+
+                        stoptime_Car3 = false;
+                        Debug.Log("here");
+
+                    }
+                    CarRightTurnDecision();
+
+                }
+               /* else if(hit.name=="Stoplight C")////also have to be careful of cars
+                {
+                    agent.isStopped = true;
+
+                    if (TriggerA.needtoStop == true)
+                    {
+
+                        stoptime_Car4 = false;
+                        Debug.Log("here");
+
+                    }
+                    CarRightTurnDecision();
+                }*/
+            }
+            else
+            {
+                agent.isStopped = true;//agent will stop
+            }
+
+
+        }
+    }
+
     private void CarDecision()
     {
         //restarting
@@ -236,6 +279,19 @@ public class CarStop : MonoBehaviour
 
         }
 
+    }
+
+    private void CarRightTurnDecision()
+    {
+        if (TriggerA.needtoStop == false)
+        {
+            StartCoroutine(CarCoroutine3());
+
+        }
+       else if (TriggerC.needtoStop == false)
+        {
+            StartCoroutine(CarCoroutine4());
+        }
     }
 
     IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
@@ -291,6 +347,57 @@ public class CarStop : MonoBehaviour
 
     }
 
+    IEnumerator CarCoroutine3()//wait for ... seconds before car becomes active
+    {
+
+        if (stoptime_Car3 == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(time);
+
+        }
+
+        if (TriggerA.needtoStop == true && agent.isStopped == true)//one last check
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+
+    }
+
+    IEnumerator CarCoroutine4()//wait for ... seconds before car becomes active
+    {
+
+        if (stoptime_Car4 == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(time);
+
+        }
+
+        if (TriggerC.needtoStop == true && agent.isStopped == true)//one last check
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+
+    }
 
     public void StopDecision(float distance,float stopDistance)
     {

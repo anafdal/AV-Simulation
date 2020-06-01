@@ -12937,7 +12937,7 @@ GameObject:
   - component: {fileID: 1689918079}
   - component: {fileID: 1689918078}
   m_Layer: 11
-  m_Name: Stopline (3)(Stoplight)
+  m_Name: Stoplight A
   m_TagString: Stoplight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
