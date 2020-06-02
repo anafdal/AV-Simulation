@@ -107,9 +107,9 @@ public class CarStop : MonoBehaviour
 
 
                         agent.isStopped = true;
+                        PedestrianCheck();
 
-
-                        //determine if there is person or not crossing
+                       /* //determine if there is person or not crossing
                         if (Trigger1.needtoStop1 == true && hit.transform.name == "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
                         {
 
@@ -125,7 +125,7 @@ public class CarStop : MonoBehaviour
                             stoptime_Car2 = false;//stop at second stopline
                                                   //Debug.Log("Here 6" + stoptime_Car2);
 
-                        }
+                        }*/
 
                     }
 
@@ -218,6 +218,112 @@ public class CarStop : MonoBehaviour
 
     }
 
+
+    public void StopDecision(float distance, float stopDistance)//stops behinds other non-moving cars or pedestrians crossing the road
+    {
+        if (distance < stopDistance)//stop the agnet behind the other car at this distance
+        {
+
+            agent.velocity = Vector3.zero;
+            agent.isStopped = true;
+
+        }
+        else
+        {
+            agent.SetDestination(agent.steeringTarget);//once car in front moves, resume path
+            agent.isStopped = false;
+        }
+
+
+    }
+
+    private void PedestrianCheck() {///checks if they is a person walking on the pedestrian walk at the stop sign
+
+        if (Trigger1.needtoStop1 == true)//determine which stopline is it referring to if there is someone crossing
+        {
+
+            stoptime_Car1 = false;//stop at first stopline
+                                  //Debug.Log("Here 2 " + stoptime_Car1);
+        }
+        else if (Trigger2.needtoStop2 == true)
+        {
+
+            stoptime_Car2 = false;//stop at second stopline
+                                  //Debug.Log("Here 6" + stoptime_Car2);
+
+        }
+   }
+
+    private void CarDecision()//decides if the car needs to wait for pedestrian or leave after pedestrian has crossed
+    {
+        //restarting
+        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
+        {
+            StartCoroutine(CarCoroutine1());
+
+        }
+        else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
+        {
+
+            StartCoroutine(CarCoroutine2());
+
+        }
+
+    }
+
+    IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
+    {
+
+        if (stoptime_Car1 == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(time);
+
+        }
+
+        if (Trigger1.needtoStop1 == true && agent.isStopped == true)//one last check
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+
+
+    }
+
+    IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
+    {
+
+        if (stoptime_Car2 == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(time);
+
+        }
+
+        if (Trigger2.needtoStop2 == true && agent.isStopped == true)//one last check
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////Stoplight 
     private void StopLightTurn(float distance)///stoplight example
     {
         if (distance < stopDistance_Stop)
@@ -265,22 +371,7 @@ public class CarStop : MonoBehaviour
         }
     }
 
-    private void CarDecision()
-    {
-        //restarting
-        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
-        {
-            StartCoroutine(CarCoroutine1());
-
-        }
-        else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
-        {
-
-            StartCoroutine(CarCoroutine2());
-
-        }
-
-    }
+ 
 
     private void CarRightTurnDecision()
     {
@@ -295,59 +386,7 @@ public class CarStop : MonoBehaviour
         }
     }
 
-    IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
-    {
-      
-            if (stoptime_Car1 == false)
-            {
-                yield return new WaitForSeconds(1.0f);
-
-            }
-          else
-          {
-          
-                yield return new WaitForSeconds(time);
-
-          }
-
-        if (Trigger1.needtoStop1 == true && agent.isStopped == true)//one last check
-        {
-            agent.isStopped = true;
-        }
-        else
-        {
-            agent.isStopped = false;
-        }
-
-
-    }
-
-    IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
-    {
-       
-        if (stoptime_Car2 == false)
-        {
-            yield return new WaitForSeconds(1.0f);
-          
-        }
-        else
-        {
-            
-            yield return new WaitForSeconds(time);
-
-        }
-
-        if (Trigger2.needtoStop2 == true && agent.isStopped == true)//one last check
-        {
-            agent.isStopped = true;
-        }
-        else
-        {
-            agent.isStopped = false;
-        }
-
-    }
-
+  
     IEnumerator CarCoroutine3()//wait for ... seconds before car becomes active
     {
 
@@ -400,23 +439,7 @@ public class CarStop : MonoBehaviour
 
     }
 
-    public void StopDecision(float distance,float stopDistance)
-    {
-        if (distance < stopDistance)//stop the agnet behind the other car at this distance
-        {
 
-            agent.velocity = Vector3.zero;
-            agent.isStopped = true;
-
-        }
-        else
-        {
-            agent.SetDestination(agent.steeringTarget);//once car in front moves, resume path
-            agent.isStopped = false;
-        }
-
-
-    }
 
 
     /*
