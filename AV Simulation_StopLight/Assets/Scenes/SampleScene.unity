@@ -506,7 +506,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &42985773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &169953924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2726,7 +2726,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &351102213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5192,7 +5192,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &734455130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5845,7 +5845,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &748301086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7190,7 +7190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38
+      value: 13.4
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7198,7 +7198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -667
+      value: -735.1
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9379,7 +9379,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &1301780873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12630,7 +12630,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &1639549902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14619,7 +14619,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16128
-  maxDistance: 100
+  maxDistance: 90
 --- !u!114 &1799891599
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,9 +16,9 @@ public class CarStop : MonoBehaviour
     //settings
     public static bool stop = false;
     public float time = 5.0f;
-    public float stopDistance_Car = 30.0f;//distance to stop behind another 
+    public float stopDistance_Car = 45.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
-    public float stopDistance_Person = 70.0f;//distance to stop behind person
+    public float stopDistance_Person = 30.0f;//distance to stop behind person
     private bool value1 = false;
   
     
@@ -26,7 +26,7 @@ public class CarStop : MonoBehaviour
     //raycast
     [SerializeField]
     private LayerMask layerMask = new LayerMask();
-    public float maxDistance = 100.0f;//raycast can detect anything with 100 units. In this simulation 100 units=10 meters.
+    public float maxDistance = 90.0f;//raycast can detect anything with 90 units
     RaycastHit raycastHit;//hit
     GameObject hit;
     //Vector3 color;
@@ -176,6 +176,7 @@ public class CarStop : MonoBehaviour
 
 
                         StopLightTurn(distance);
+                        Debug.Log(agent.name + " hit");
 
                     }
 
@@ -223,19 +224,19 @@ public class CarStop : MonoBehaviour
         {
 
             //turn right
-            if (agent.name == "Car (4)" || agent.name == "Car (3)" || agent.name == "Car (6)" || agent.name == "Car (7)")
+            if (agent.name == "Car (4)" || agent.name == "Car (3)" || agent.name == "Car (6)" || agent.name == "Car (7)")//using a tag to differentiate between the two cars would be best
             {
-                //Debug.Log(agent.name+" will turn");
+               Debug.Log(agent.name+" will turn");
 
-                if (hit.name == "Stoplight A")
+                if (hit.name == "Stoplight A")//need raycast range to be 90
                 {
                     agent.isStopped = true;
 
-                    if (TriggerA.needtoStop == true)
+                    if (TriggerA.needtoStop == true || TriggerB.needtoStop==true)//works
                     {
 
                         stoptime_Car3 = false;
-                        Debug.Log("here");
+                        //Debug.Log("here");
 
                     }
                     CarRightTurnDecision();
@@ -283,7 +284,7 @@ public class CarStop : MonoBehaviour
 
     private void CarRightTurnDecision()
     {
-        if (TriggerA.needtoStop == false)
+        if (TriggerA.needtoStop == false || TriggerB.needtoStop==false)
         {
             StartCoroutine(CarCoroutine3());
 
@@ -362,7 +363,7 @@ public class CarStop : MonoBehaviour
 
         }
 
-        if (TriggerA.needtoStop == true && agent.isStopped == true)//one last check
+        if ((TriggerA.needtoStop == true && agent.isStopped == true) || (TriggerB.needtoStop == true && agent.isStopped == true))//one last check
         {
             agent.isStopped = true;
         }
