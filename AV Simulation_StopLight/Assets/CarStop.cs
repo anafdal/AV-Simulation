@@ -98,16 +98,18 @@ public class CarStop : MonoBehaviour
 
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
-
+                    GameObject trigger = hit.transform.GetChild(1).gameObject;
+                    
 
                     //stopping
                     if (distance < stopDistance_Stop)
                     {//if no one is crossing, continue usual routine
-                        //imValue = 2;////can cross
 
+                       
+                        
 
                         agent.isStopped = true;
-                        PedestrianCheck();
+                        PedestrianCheck(trigger);
 
                        /* //determine if there is person or not crossing
                         if (Trigger1.needtoStop1 == true && hit.transform.name == "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
@@ -129,10 +131,11 @@ public class CarStop : MonoBehaviour
 
                     }
 
-                    CarDecision();
+                    CarDecision(trigger);
+                    
 
                 }
-                else if (hit.transform.tag == "Car")//detects other car in front
+                else if (hit.transform.tag == "Car1" || hit.transform.tag == "Car2")//detects other car in front
                 {
                     stopdestination = hit.transform.GetChild(0).position;//psoition to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);// calculate distance between objects
@@ -172,11 +175,11 @@ public class CarStop : MonoBehaviour
                     {
                         value1 = true;
                         IconUi.ChangeIcon2(distance, red.enabled, value1, agent);//only if light is red
-                                                                                 //Debug.Log(agent.name+" :"+distance);
+                       //Debug.Log(agent.name+" :"+distance);
 
 
                         StopLightTurn(distance);
-                        Debug.Log(agent.name + " hit");
+                       //Debug.Log(agent.name + " hit");
 
                     }
 
@@ -187,7 +190,7 @@ public class CarStop : MonoBehaviour
 
                         if(hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                         {
-                            if(TriggerA.needtoStop==true || TriggerB.needtoStop == true)//some is still walking in the crossroad
+                            if(TriggerA.needtoStop==true || TriggerD.needtoStop==true)//some is still walking in the crossroad
                             {
                                 agent.isStopped = true;//agent will not move
                             }
@@ -198,7 +201,7 @@ public class CarStop : MonoBehaviour
                         }
                         else if(hit.name== "Stoplight C")
                         {
-                            if (TriggerC.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                            if (TriggerC.needtoStop == true)//some is still walking in the crossroad
                             {
                                 agent.isStopped = true;//agent will not move
                             }
@@ -227,6 +230,9 @@ public class CarStop : MonoBehaviour
                 {
                     agent.isStopped = false;//agent will move
                     agent.SetDestination(agent.steeringTarget);
+
+                  
+
                     //Debug.Log(agent.name+": Hit");
                 }
 
@@ -241,6 +247,7 @@ public class CarStop : MonoBehaviour
                 agent.isStopped = false;
                 agent.SetDestination(agent.steeringTarget);
 
+                stoptime_Car1 = true;//need this here
                 //Debug.Log(agent+": "+agent.isOnNavMesh);
                 //transform.LookAt(agent.steeringTarget);
             }
@@ -272,56 +279,61 @@ public class CarStop : MonoBehaviour
 
     }
 
-    private void PedestrianCheck() {///checks if they is a person walking on the pedestrian walk at the stop sign
+    private void PedestrianCheck(GameObject trigger) {///checks if they is a person walking on the pedestrian walk at the stop sign
 
-        if (Trigger1.needtoStop1 == true)//determine which stopline is it referring to if there is someone crossing
+        /* if (Trigger1.needtoStop1 == true)//determine which stopline is it referring to if there is someone crossing
+         {
+
+             stoptime_Car1 = false;//stop at first stopline
+                                   //Debug.Log("Here 2 " + stoptime_Car1);
+         }
+         else if (Trigger2.needtoStop2 == true)
+         {
+
+             stoptime_Car2 = false;//stop at second stopline
+                                   //Debug.Log("Here 6" + stoptime_Car2);
+
+         }*/
+
+        if (trigger.GetComponent<Trigger1>().needtoStop1 == true)
         {
-
-            stoptime_Car1 = false;//stop at first stopline
-                                  //Debug.Log("Here 2 " + stoptime_Car1);
+            stoptime_Car1 = false;
         }
-        else if (Trigger2.needtoStop2 == true)
-        {
+      
 
-            stoptime_Car2 = false;//stop at second stopline
-                                  //Debug.Log("Here 6" + stoptime_Car2);
+    }
 
-        }
-   }
-
-    private void CarDecision()//decides if the car needs to wait for pedestrian or leave after pedestrian has crossed
+    private void CarDecision(GameObject trigger)//decides if the car needs to wait for pedestrian or leave after pedestrian has crossed
     {
         //restarting
-        if (Trigger1.needtoStop1 == false && hit.transform.name == "Stopline (2)(Stop)")
+        if (trigger.GetComponent<Trigger1>().needtoStop1 == false)
         {
-            StartCoroutine(CarCoroutine1());
+            StartCoroutine(CarCoroutine1(trigger));
 
         }
-        else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
+       /* else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
         {
 
             StartCoroutine(CarCoroutine2());
 
-        }
+        }*/
 
     }
 
-    IEnumerator CarCoroutine1()//wait for ... seconds before car becomes active
+    IEnumerator CarCoroutine1(GameObject trigger)//wait for ... seconds before car becomes active
     {
 
         if (stoptime_Car1 == false)
         {
             yield return new WaitForSeconds(1.0f);
-
+            
         }
         else
         {
-
-            yield return new WaitForSeconds(time);
-
+            yield return new WaitForSeconds(time);           
         }
 
-        if (Trigger1.needtoStop1 == true && agent.isStopped == true)//one last check
+        if (trigger.GetComponent<Trigger1>().needtoStop1 == true && agent.isStopped == true)//one last check
         {
             agent.isStopped = true;
         }
@@ -330,10 +342,10 @@ public class CarStop : MonoBehaviour
             agent.isStopped = false;
         }
 
-
+        
     }
 
-    IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
+   /* IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
     {
 
         if (stoptime_Car2 == false)
@@ -357,7 +369,7 @@ public class CarStop : MonoBehaviour
             agent.isStopped = false;
         }
 
-    }
+    }*/
     ///////////////////////////////////////////////////////////////////////////////////////////////Stoplight 
     private void StopLightTurn(float distance)///stoplight example
     {
@@ -365,7 +377,7 @@ public class CarStop : MonoBehaviour
         {
 
             //turn right
-            if (agent.name == "Car (4)" || agent.name == "Car (3)" || agent.name == "Car (6)" || agent.name == "Car (7)")//using a tag to differentiate between the two cars would be best
+            if (agent.tag=="Car2")//using a tag to differentiate between the two cars would be best
             {
                Debug.Log(agent.name+" will turn");
 
@@ -477,383 +489,7 @@ public class CarStop : MonoBehaviour
 
 
 
-    /*
-    public void ChangeIcon(string carName,float distance)//for stop signs and passerbys
-    {
-
-       if (carName == "Car (1)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect1.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect1.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect1.imValue = 3;
-
-            }
-        }
-        else if(carName== "Car (2)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect2.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect2.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect2.imValue = 3;
-            }
-        }
-        else if (carName == "Car (3)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect3.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect3.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect3.imValue = 3;
-            }
-
-        }
-        else if (carName == "Car (4)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect4.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect4.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect4.imValue = 3;
-            }
-
-        }
-        else if (carName == "Car (5)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect5.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect5.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect5.imValue = 3;
-            }
-
-        }
-        else if (carName == "Car (6)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect6.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect6.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect6.imValue = 3;
-            }
-
-        }
-        else if (carName == "Car (7)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect7.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect7.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect7.imValue = 3;
-            }
-
-        }
-        else if (carName == "Car (8)")
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                IconDetect8.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                IconDetect8.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                IconDetect8.imValue = 3;
-            }
-
-        }
-
-    }
-
-    public void StopIcon(string carName)//no icons
-    {
-
-        if (carName == "Car (1)")
-        {
-
-            IconDetect1.imValue = 0;
-        }
-        else if (carName == "Car (2)")
-        {
-            IconDetect2.imValue = 0;
-
-        }
-        else if (carName == "Car (3)")
-        {
-            IconDetect3.imValue = 0;
-
-        }
-        else if (carName == "Car (4)")
-        {
-            IconDetect4.imValue = 0;
-
-        }
-        else if (carName == "Car (5)")
-        {
-            IconDetect5.imValue = 0;
-
-        }
-        else if (carName == "Car (6)")
-        {
-            IconDetect6.imValue = 0;
-
-        }
-        else if (carName == "Car (7)")
-        {
-            IconDetect7.imValue = 0;
-
-        }
-        else if (carName == "Car (8)")
-        {
-            IconDetect8.imValue = 0;
-
-        }
-
-    }
-
-    public void ChangeIcon2(string carName, float distance, bool red)//for stoplights
-    {
-
-        if (carName == "Car (1)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect1.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect1.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-
-        else if (carName == "Car (2)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect2.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect2.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (3)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect3.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect3.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (4)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect4.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect4.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (5)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect5.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect5.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (6)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect6.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect6.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (7)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect7.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect7.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-        else if (carName == "Car (8)" && value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
-            {
-                IconDetect8.imValue = 1;
-
-            }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
-            {
-                IconDetect8.imValue = 2;
-                //Debug.Log(imValue);
-            }
-        }
-
-    }
-
-    public void StopIcon2(string carName)//for stoplights
-    {
-
-        if (carName == "Car (1)" && value1 == true)
-        {
-             if (agent.isStopped == false)
-            {
-                IconDetect1.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (2)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect2.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (3)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect3.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (4)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect4.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (5)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect5.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (6)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect6.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (7)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect7.imValue = 3;
-                value1 = false;
-            }
-        }
-        else if (carName == "Car (8)" && value1 == true)
-        {
-            if (agent.isStopped == false)
-            {
-                IconDetect8.imValue = 3;
-                value1 = false;
-            }
-        }
-
-    }*/
-
+    
 
 }
 
