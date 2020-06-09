@@ -183,12 +183,47 @@ public class CarStop : MonoBehaviour
                     else if (green.enabled == true)//if green is on
                     {
                         IconUi.StopIcon2(value1, agent);
-                        agent.isStopped = false;//agent will move
+                        
+
+                        if(hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
+                        {
+                            if(TriggerA.needtoStop==true || TriggerB.needtoStop == true)//some is still walking in the crossroad
+                            {
+                                agent.isStopped = true;//agent will not move
+                            }
+                            else
+                            {
+                                agent.isStopped = false;//agent will move
+                            }
+                        }
+                        else if(hit.name== "Stoplight C")
+                        {
+                            if (TriggerC.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                            {
+                                agent.isStopped = true;//agent will not move
+                            }
+                            else
+                            {
+                                agent.isStopped = false;//agent will move
+                            }
+                        }
+                        else if(hit.name== "Stoplight D")
+                        {
+                            if (TriggerD.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                            {
+                                agent.isStopped = true;//agent will not move
+                            }
+                            else
+                            {
+                                agent.isStopped = false;//agent will move
+                            }
+                        }
+
                         
                     }
 
                 }
-                else if (hit.transform.tag == "Check")//prevent the agent froms dtopping in the midddle of the crossroad if light turns red
+                else if (hit.transform.tag == "Check")//prevent the agent froms stopping in the midddle of the crossroad if light turns red
                 {
                     agent.isStopped = false;//agent will move
                     agent.SetDestination(agent.steeringTarget);
