@@ -25,10 +25,10 @@ public class CarStop : MonoBehaviour
     //raycast
     [SerializeField]
     private LayerMask layerMask = new LayerMask();
-    public float maxDistance = 90.0f;//raycast can detect anything with 90 units
+    public float maxDistance = 100.0f;//raycast can detect anything with 90 units
     RaycastHit raycastHit;//hit
     GameObject hit;
-   
+   sk
 
     void Start()
     {
