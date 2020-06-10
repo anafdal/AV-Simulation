@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trigger1 : MonoBehaviour
 {
-    public static bool needtoStop1 = false;
+    public bool needtoStop1 = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

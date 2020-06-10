@@ -11,6 +11,8 @@ TagManager:
   - Fire
   - Protector
   - Check
+  - Car1
+  - Car2
   layers:
   - Default
   - TransparentFX

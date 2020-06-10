@@ -4,37 +4,40 @@ using UnityEngine;
 
 public class LightSwitch0 : MonoBehaviour
 {
-    public Light green;
-    public Light red;
+    public Light first;
+    public Light second;
     public float time = 20.0f;//rate to change lights
 
-    public GameObject redSpot;
-    public GameObject greenSpot;
+    public GameObject firstSpot;
+    public GameObject secondSpot;
     public GameObject yellowSpot;
 
-
+    /// <summary>
+    /// Light A and D will turn red first then green second
+    /// Light C will turn green first then red second
+    /// </summary>
     void Start()
     {
-        green = green.GetComponent<Light>();
-        red = red.GetComponent<Light>();
+        second = second.GetComponent<Light>();
+        first = first.GetComponent<Light>();
 
-        green.enabled = true;
-        red.enabled = false;
+        second.enabled = true;
+        first.enabled = false;
 
         yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
-        redSpot.GetComponent<Renderer>().material.color = Color.gray;
-        greenSpot.GetComponent<Renderer>().material.color = Color.green;
+        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+        secondSpot.GetComponent<Renderer>().material.color = Color.red;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (green.enabled == true && red.enabled == false)
+        if (second.enabled == true && first.enabled == false)
         {
             StartCoroutine(LightChange1());
 
         }
-        else if (green.enabled == false && red.enabled == true)
+        else if (second.enabled == false && first.enabled == true)
         {
             StartCoroutine(LightChange2());
 
@@ -48,12 +51,12 @@ public class LightSwitch0 : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
-        green.enabled = false;
-        red.enabled = true;
+        second.enabled = false;
+        first.enabled = true;
 
-        redSpot.GetComponent<Renderer>().material.color = Color.red;
-        greenSpot.GetComponent<Renderer>().material.color = Color.gray;
-        //Debug.Log("Entered1");
+        firstSpot.GetComponent<Renderer>().material.color = Color.red;
+        secondSpot.GetComponent<Renderer>().material.color = Color.gray;
+        //Debug.Log("Entefirst1");
     }
 
 
@@ -63,11 +66,11 @@ public class LightSwitch0 : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
-        green.enabled = true;
-        red.enabled = false;
+        second.enabled = true;
+        first.enabled = false;
 
-        redSpot.GetComponent<Renderer>().material.color = Color.gray;
-        greenSpot.GetComponent<Renderer>().material.color = Color.green;
-        //Debug.Log("Entered2");
+        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+        secondSpot.GetComponent<Renderer>().material.color = Color.green;
+        //Debug.Log("Entefirst2");
     }
 }
