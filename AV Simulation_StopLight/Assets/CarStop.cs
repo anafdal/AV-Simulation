@@ -183,14 +183,19 @@ public class CarStop : MonoBehaviour
                     {
                         IconUi.StopIcon2(value1, agent);
 
-                        CheckPedestrainCrossRoad();
+                        CheckPedestrainCrossRoad(distance);
                     }
 
                 }
                 else if (hit.transform.tag == "Check")//prevent the agent froms stopping in the midddle of the crossroad if light turns red
                 {
-                    agent.isStopped = false;//agent will move
-                    agent.SetDestination(agent.steeringTarget);
+                   float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance
+
+                    if (distance < 20)
+                    {
+                        agent.isStopped = false;//agent will move
+                        agent.SetDestination(agent.steeringTarget);
+                    }
 
                   
 
@@ -380,66 +385,70 @@ public class CarStop : MonoBehaviour
         }
     }
 
-    private void CheckPedestrainCrossRoad()//green light check
+    private void CheckPedestrainCrossRoad(float distance)//green light check
     {
-        if (agent.tag == "Car1")
+        if (distance < stopDistance_Stop)
         {
-            if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
+            if (agent.tag == "Car1")//cars go straight
             {
-
-                if (TriggerA.needtoStop == true || TriggerD.needtoStop == true)//some is still walking in the crossroad
+                if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
 
-                    agent.isStopped = true;//agent will not move
+                    if (TriggerA.needtoStop == true || TriggerD.needtoStop == true)//some is still walking in the crossroad
+                    {
 
+                        agent.isStopped = true;//agent will not move
+
+                    }
+                    else
+                    {
+                        agent.isStopped = false;//agent will move
+                    }
                 }
-                else
+                else if (hit.name == "Stoplight D")
                 {
-                    agent.isStopped = false;//agent will move
+                    if (TriggerD.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                    {
+                        agent.isStopped = true;//agent will not move
+                    }
+                    else
+                    {
+                        agent.isStopped = false;//agent will move
+                    }
                 }
             }
-            else if (hit.name == "Stoplight D")
+            else if (agent.tag == "Car2")//cars turn in the intersection
             {
-                if (TriggerD.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
-                    agent.isStopped = true;//agent will not move
+
+                    if (TriggerA.needtoStop == true || TriggerB.needtoStop == true)//some is still walking in the crossroad
+                    {
+
+                        agent.isStopped = true;//agent will not move
+                        Debug.Log("no turn");
+
+                    }
+                    else
+                    {
+                        agent.isStopped = false;//agent will move
+                    }
                 }
-                else
+                else if (hit.name == "Stoplight C")
                 {
-                    agent.isStopped = false;//agent will move
+                    if (TriggerC.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
+                    {
+                        agent.isStopped = true;//agent will not move
+                    }
+                    else
+                    {
+                        agent.isStopped = false;//agent will move
+                    }
                 }
+
             }
         }
-        else if(agent.tag=="Car2")
-        {
-            if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
-            {
-
-                if (TriggerA.needtoStop == true || TriggerB.needtoStop==true)//some is still walking in the crossroad
-                {
-
-                    agent.isStopped = true;//agent will not move
-
-                }
-                else
-                {
-                    agent.isStopped = false;//agent will move
-                }
-            }
-            else if (hit.name == "Stoplight C")
-            {
-                if (TriggerC.needtoStop == true || TriggerA.needtoStop == true)//some is still walking in the crossroad
-                {
-                    agent.isStopped = true;//agent will not move
-                }
-                else
-                {
-                    agent.isStopped = false;//agent will move
-                }
-            }
-          
-        }
-
+      
     }
 
     private void CarRightTurnDecision()
