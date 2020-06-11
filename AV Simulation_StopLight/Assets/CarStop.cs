@@ -183,7 +183,7 @@ public class CarStop : MonoBehaviour
                     {
                         IconUi.StopIcon2(value1, agent);
 
-                        CheckPedestrainCrossRoad();
+                        CheckPedestrainCrossRoad(distance);
                     }
 
                 }
@@ -380,9 +380,9 @@ public class CarStop : MonoBehaviour
         }
     }
 
-    private void CheckPedestrainCrossRoad()//green light check
+    private void CheckPedestrainCrossRoad(float distance)//green light check
     {
-        if (agent.tag == "Car1")
+        if (agent.tag == "Car1" && distance < stopDistance_Stop)//cars go straight
         {
             if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
             {
@@ -410,7 +410,7 @@ public class CarStop : MonoBehaviour
                 }
             }
         }
-        else if(agent.tag=="Car2")
+        else if(agent.tag=="Car2" && distance < stopDistance_Stop)//cars turn in the intersection
         {
             if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
             {
