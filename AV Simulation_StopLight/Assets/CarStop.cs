@@ -390,7 +390,7 @@ public class CarStop : MonoBehaviour
     {
         if (distance < stopDistance_Stop)
         {
-            if (agent.tag == "Car1")//cars go straight
+            if (agent.CompareTag("Car1"))//cars go straight
             {
                 if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
@@ -418,14 +418,14 @@ public class CarStop : MonoBehaviour
                     }
                 }
             }
-            else if (agent.tag == "Car2")//cars turn in the intersection
+            else if (agent.CompareTag("Car2"))//use comparetag-it is faster
             {
                 if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
 
                     if (TriggerA.needtoStop == true || TriggerB.needtoStop == true)//some is still walking in the crossroad
                     {
-
+                        //agent.velocity = Vector3.zero;
                         agent.isStopped = true;//agent will not move
                         Debug.Log("no turn");
 
