@@ -346,7 +346,7 @@ public class CarStop : MonoBehaviour
             //turn right
             if (agent.tag=="Car2")//using a tag to differentiate between the two cars would be best
             {
-               Debug.Log(agent.name+" will turn");
+               //Debug.Log(agent.name+" will turn");
 
                 if (hit.name == "Stoplight A")//need raycast range to be 90
                 {
@@ -359,6 +359,7 @@ public class CarStop : MonoBehaviour
                         //Debug.Log("here");
 
                     }
+
                     CarRightTurnDecision();
 
                 }
