@@ -84,6 +84,10 @@ public class CarStop : MonoBehaviour
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
 
+           
+               //Debug.Log(Mathf.Sqrt(Vector3.Dot(agent.velocity, agent.velocity)));//use for Car 8
+            
+
             //Debug.Log(agent + "in " + stop);
 
             if (stop == true)//if raycast does encounter anything
