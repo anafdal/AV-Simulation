@@ -84,6 +84,10 @@ public class CarStop : MonoBehaviour
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
 
+           
+               //Debug.Log(Mathf.Sqrt(Vector3.Dot(agent.velocity, agent.velocity)));//use for Car 8
+            
+
             //Debug.Log(agent + "in " + stop);
 
             if (stop == true)//if raycast does encounter anything
@@ -346,7 +350,7 @@ public class CarStop : MonoBehaviour
             //turn right
             if (agent.tag=="Car2")//using a tag to differentiate between the two cars would be best
             {
-               Debug.Log(agent.name+" will turn");
+               //Debug.Log(agent.name+" will turn");
 
                 if (hit.name == "Stoplight A")//need raycast range to be 90
                 {
@@ -359,6 +363,7 @@ public class CarStop : MonoBehaviour
                         //Debug.Log("here");
 
                     }
+
                     CarRightTurnDecision();
 
                 }
@@ -389,7 +394,7 @@ public class CarStop : MonoBehaviour
     {
         if (distance < stopDistance_Stop)
         {
-            if (agent.tag == "Car1")//cars go straight
+            if (agent.CompareTag("Car1"))//cars go straight
             {
                 if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
@@ -417,14 +422,14 @@ public class CarStop : MonoBehaviour
                     }
                 }
             }
-            else if (agent.tag == "Car2")//cars turn in the intersection
+            else if (agent.CompareTag("Car2"))//use comparetag-it is faster
             {
                 if (hit.name == "Stoplight A")//check if there are still pedestrians walking in the crossroad
                 {
 
                     if (TriggerA.needtoStop == true || TriggerB.needtoStop == true)//some is still walking in the crossroad
                     {
-
+                        //agent.velocity = Vector3.zero;
                         agent.isStopped = true;//agent will not move
                         Debug.Log("no turn");
 
