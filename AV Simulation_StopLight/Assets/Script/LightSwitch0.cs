@@ -24,9 +24,9 @@ public class LightSwitch0 : MonoBehaviour
         second.enabled = true;
         first.enabled = false;
 
-        yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
-        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
-        secondSpot.GetComponent<Renderer>().material.color = Color.red;
+        //yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
+        //firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+        //secondSpot.GetComponent<Renderer>().material.color = Color.red;
     }
 
     // Update is called once per frame
@@ -54,8 +54,8 @@ public class LightSwitch0 : MonoBehaviour
         second.enabled = false;
         first.enabled = true;
 
-        firstSpot.GetComponent<Renderer>().material.color = Color.red;
-        secondSpot.GetComponent<Renderer>().material.color = Color.gray;
+        //firstSpot.GetComponent<Renderer>().material.color = Color.red;
+        //secondSpot.GetComponent<Renderer>().material.color = Color.gray;
         //Debug.Log("Entefirst1");
     }
 
@@ -69,8 +69,8 @@ public class LightSwitch0 : MonoBehaviour
         second.enabled = true;
         first.enabled = false;
 
-        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
-        secondSpot.GetComponent<Renderer>().material.color = Color.green;
+        //firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+        //secondSpot.GetComponent<Renderer>().material.color = Color.green;
         //Debug.Log("Entefirst2");
     }
 }

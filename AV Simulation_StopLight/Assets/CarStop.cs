@@ -15,12 +15,12 @@ public class CarStop : MonoBehaviour
     //settings
     public static bool stop = false;
     public float time = 5.0f;
-    public float stopDistance_Car = 45.0f;//distance to stop behind another 
+    public float stopDistance_Car = 45.0f;//distance to stop behind another
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 30.0f;//distance to stop behind person
     private bool value1 = false;
-  
-    
+
+
 
     //raycast
     [SerializeField]
@@ -41,8 +41,8 @@ public class CarStop : MonoBehaviour
     void Update()
     {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Raycast
-       
-     
+
+
 
         if (transform.gameObject.activeInHierarchy == true)//only when car is active
         {
@@ -77,9 +77,9 @@ public class CarStop : MonoBehaviour
             else//good here
             {
 
-                
-                IconUi.StopIcon(agent);                  
-               
+
+                IconUi.StopIcon(agent);
+
             }
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
@@ -95,14 +95,14 @@ public class CarStop : MonoBehaviour
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
                     GameObject trigger = hit.transform.GetChild(1).gameObject;
-                    
+
 
                     //stopping
                     if (distance < stopDistance_Stop)
                     {//if no one is crossing, continue usual routine
 
-                       
-                        
+
+
 
                         agent.isStopped = true;
                         PedestrianCheck(trigger);
@@ -113,7 +113,7 @@ public class CarStop : MonoBehaviour
 
                             stoptime_Car1 = false;//stop at first stopline
                                                   //Debug.Log("Here 2 " + stoptime_Car1);
-                           
+
 
 
                         }
@@ -128,7 +128,7 @@ public class CarStop : MonoBehaviour
                     }
 
                     CarDecision(trigger);
-                    
+
 
                 }
                 else if (hit.transform.tag == "Car1" || hit.transform.tag == "Car2")//detects other car in front
@@ -141,13 +141,13 @@ public class CarStop : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Protector")//detect a person
                 {
-                    
+
 
                     float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance between objects
                     IconUi.ChangeIcon(distance, agent);
 
                     StopDecision(distance, stopDistance_Person);
-                    
+
 
                 }
 
@@ -164,8 +164,8 @@ public class CarStop : MonoBehaviour
 
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
 
-                    
-                    
+
+
 
                     if (red.enabled == true)//if red is on
                     {
@@ -197,14 +197,14 @@ public class CarStop : MonoBehaviour
                         agent.SetDestination(agent.steeringTarget);
                     }
 
-                  
+
 
                     //Debug.Log(agent.name+": Hit");
                 }
 
 
                 stop = false;//nothing is being detected by raycast anymore
-              
+
 
             }
             else if (stop == false)//if nothing is being detected car will continue on its path
@@ -266,7 +266,7 @@ public class CarStop : MonoBehaviour
         {
             stoptime_Car1 = false;
         }
-      
+
 
     }
 
@@ -293,11 +293,11 @@ public class CarStop : MonoBehaviour
         if (stoptime_Car1 == false)
         {
             yield return new WaitForSeconds(1.0f);
-            
+
         }
         else
         {
-            yield return new WaitForSeconds(time);           
+            yield return new WaitForSeconds(time);
         }
 
         if (trigger.GetComponent<Trigger1>().needtoStop1 == true && agent.isStopped == true)//one last check
@@ -309,7 +309,7 @@ public class CarStop : MonoBehaviour
             agent.isStopped = false;
         }
 
-        
+
     }
 
    /* IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
@@ -337,7 +337,7 @@ public class CarStop : MonoBehaviour
         }
 
     }*/
-    ///////////////////////////////////////////////////////////////////////////////////////////////Stoplight 
+    ///////////////////////////////////////////////////////////////////////////////////////////////Stoplight
     private void StopLightTurn(float distance)///stoplight example
     {
         if (distance < stopDistance_Stop)
@@ -448,7 +448,7 @@ public class CarStop : MonoBehaviour
 
             }
         }
-      
+
     }
 
     private void CarRightTurnDecision()
@@ -464,7 +464,7 @@ public class CarStop : MonoBehaviour
         }
     }
 
-  
+
     IEnumerator CarCoroutine3()//wait for ... seconds before car becomes active
     {
 
@@ -520,12 +520,6 @@ public class CarStop : MonoBehaviour
 
 
 
-    
+
 
 }
-
-
-
- 
-
-
