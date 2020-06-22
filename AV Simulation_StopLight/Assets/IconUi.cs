@@ -34,7 +34,7 @@ public class IconUi : MonoBehaviour
 
     }
 
-    public static void StopIcon(NavMeshAgent agent)//no icons
+    public static void StopIcon(NavMeshAgent agent)//only running icons
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
@@ -43,39 +43,44 @@ public class IconUi : MonoBehaviour
     }
 
 
-    public static void ChangeIcon2(float distance, bool red, bool value1, NavMeshAgent agent)//for stoplights
+
+
+   public static void ChangeIcon2(float distance, bool red, bool value2, NavMeshAgent agent)//for stoplights
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
-        if ( value1 == true)
-        {
-            if (35 < distance && distance < 100 && agent.isStopped == false && red == true)
+       
+            if (40 < distance && distance < 100 && agent.isStopped == false && red == true)
             {
                 detect.imValue = 1;
 
             }
-            else if (agent.isStopped == true && distance <= 35 && red == true)
+            else if (agent.isStopped == true && distance <= 40 && red == true)
             {
                 detect.imValue = 2;
                 //Debug.Log(imValue);
             }
-        }
+       
    
 
     }
 
-    public static void StopIcon2(bool value1, NavMeshAgent agent)//for stoplights
+    public static bool StopIcon2(bool value2, NavMeshAgent agent)//for stoplights
     {
         IconDetect detect = agent.gameObject.GetComponent<IconDetect>();
 
-        if (value1 == true)
+        if (value2 == true)//this agent has already been stopped
         {
             if (agent.isStopped == false)
             {
                 detect.imValue = 3;
-                value1 = false;
+                value2 = false;             
             }
+
+           
         }
+
+        return value2;
     }
        
 }

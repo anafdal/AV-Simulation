@@ -18,7 +18,7 @@ public class CarStop : MonoBehaviour
     public float stopDistance_Car = 45.0f;//distance to stop behind another 
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 30.0f;//distance to stop behind person
-    private bool value1 = false;
+    private bool value2 = false;
   
     
 
@@ -146,16 +146,13 @@ public class CarStop : MonoBehaviour
                     Light red = stoplight.transform.Find("red light").GetComponent<Light>();
                     Light green = stoplight.transform.Find("green light").GetComponent<Light>();
 
-
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
 
-                    
-                    
-
+                  
                     if (red.enabled == true)//if red is on
                     {
-                        value1 = true;
-                        IconUi.ChangeIcon2(distance, red.enabled, value1, agent);//only if light is red
+                        value2 = true;
+                        IconUi.ChangeIcon2(distance, red.enabled, value2, agent);//only if light is red
                        //Debug.Log(agent.name+" :"+distance);
 
 
@@ -166,7 +163,7 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                        IconUi.StopIcon2(value1, agent);
+                         value2=IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
 
                         CheckPedestrainCrossRoad(distance);
                     }
