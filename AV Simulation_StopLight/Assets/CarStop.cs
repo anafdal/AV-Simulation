@@ -152,9 +152,17 @@ public class CarStop : MonoBehaviour
                     if (red.enabled == true)//if red is on
                     {
                         value2 = true;
-                        IconUi.ChangeIcon2(distance, red.enabled, value2, agent);//only if light is red
-                       //Debug.Log(agent.name+" :"+distance);
 
+                        if (agent.CompareTag("Car1"))
+                        {
+                            IconUi.ChangeIcon2(distance, red.enabled, value2, agent);//only if light is red
+                           //Debug.Log(agent.name+" :"+distance);
+                        }
+                      
+                        else if (agent.CompareTag("Car2"))//these cars will turn 
+                        {
+                            IconUi.ChangeIcon(distance,agent);
+                        }
 
                         StopLightTurn(distance);
                        //Debug.Log(agent.name + " hit");
@@ -163,7 +171,7 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                         value2=IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
+                         //value2=IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
 
                         CheckPedestrainCrossRoad(distance);
                     }
@@ -329,10 +337,12 @@ public class CarStop : MonoBehaviour
 
                         agent.isStopped = true;//agent will not move
 
+
                     }
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
                 else if (hit.name == "Stoplight D")
@@ -344,6 +354,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
             }
@@ -362,6 +373,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
                 else if (hit.name == "Stoplight C")
@@ -373,6 +385,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
 
