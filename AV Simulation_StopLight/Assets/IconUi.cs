@@ -10,21 +10,25 @@ public class IconUi : MonoBehaviour
         IconDetect detect=agent.gameObject.GetComponent<IconDetect>();
 
         {
-            if (35 < distance && distance < 100 && agent.isStopped == false)
-            {
-                detect.imValue = 1;
+            
+                if (40 < distance && distance < 100 && agent.velocity != Vector3.zero)
+                {
+                    detect.imValue = 1;
 
-            }
-            else if (agent.isStopped == true && distance <= 35)
-            {
-                detect.imValue = 2;
-                //Debug.Log(imValue);
-            }
-            else if (agent.isStopped == false && distance <= 20)
-            {
-                detect.imValue = 3;
+                }
+                else if (agent.velocity == Vector3.zero && distance <= 40)
+                {
+                    detect.imValue = 2;
+                    //Debug.Log(imValue);
+                }
+                else if (agent.isStopped == false && distance <= 20)
+                {
+                    detect.imValue = 3;
 
-            }
+                }
+            
+           
+           
         }
        
 
@@ -37,6 +41,7 @@ public class IconUi : MonoBehaviour
         detect.imValue = 0;
 
     }
+
 
     public static void ChangeIcon2(float distance, bool red, bool value1, NavMeshAgent agent)//for stoplights
     {
