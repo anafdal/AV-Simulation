@@ -12,7 +12,7 @@ Autonomous vehicles (AV) is a merging theme for the advent era of future transpo
 
 ## Setup
 This is a first person view experience. The user can move using the usual a,w,s,d keyboard inputs.
-The traffic logic depends upon what scenarios the vehicle is present in. A Behaviour Tree is utilized for decision making as it is seen in the algorithm below. There will be different behaviours for different situations:/n
+The traffic logic depends upon what scenarios the vehicle is present in. A Behaviour Tree is utilized for decision making as it is seen in the algorithm below. There will be different behaviours for different situations:/n/
 For example, when the vehicle stops before a stop sign, it will only stop for a certain period of time specified by the user, unless there is a person walking on the crossing street which will cause the vehicle to only wait until the road is empty again.
  Stopping in front of a stoplight, will also cause the vehicle to behave in different ways as it depends on a different set of factors like which light is activated and if someone is passing through the crossroad:
  * Unity: 2019.2.2f1
