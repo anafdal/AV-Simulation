@@ -2,8 +2,8 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [Technologies](#technologies)
 * [Setup](#setup)
+* [Technologies](#technologies)
 
 
 ## General info
