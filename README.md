@@ -3,11 +3,13 @@
 ## General info
 Autonomous vehicles (AV) is a merging theme for the advent era of future transportation.  In design, AVs are able to effectively assist humans in everyday tasks. However, one challenge prevents pedestrian-AV interactions research is that there are no public and standardized benchmarks to investigate different manners of interactions to communicate AVs’awareness and intent to pedestrians. To address the existing limitation, this proposed work aims to include general interactive interfaces on AV and introduce the VR-PAVIB benchmark for researchers to investigate the impact of different interface features on pedestrians’ perception of the AV behavior on the road.
 
+
+## Setup
 The traffic logic depends upon what scenarios the vehicle is present in. A Behaviour Tree is utilized for decision making as it is seen in the algorithm below. There will be different behaviours for different situations. 
 For example, when the vehicle stops before a stop sign, it will only stop for a certain period of time specified by the user, unless there is a person walking on the crossing street which will cause the vehicle to only wait until the road is empty again.
- Stopping in front of a stoplight, will also cause the vehicle to behave in different ways as it depends on a different set of factors like which light is activated and if someone is passing through the crossroad. The vehicle is able to differentiate between these different scenarios by using raycasting. Through raycasting, the vehicle is informed on what object is ahead of it and what behaviour it should perform. The Navigation Mesh System is also utilized to guide the vehicles in their path and determine where they need to go next.
-
-In the end the project involves two main scenarios: user walking through a crossroad with a stop sign, and user walking through a stoplight intersection.
+ Stopping in front of a stoplight, will also cause the vehicle to behave in different ways as it depends on a different set of factors like which light is activated and if someone is passing through the crossroad. The vehicle is able to differentiate between these different scenarios by using raycasting. Through raycasting, the vehicle is informed on what object is ahead of it and what behaviour it should perform. The Navigation Mesh System is also utilized to guide the vehicles in their path and determine where they need to go next.In the end the project involves two main scenarios: user walking through a crossroad with a stop sign, and user walking through a stoplight intersection.
+ 
+## Technologies 
 Project is created with:
 * Unity: 2019.2.2f1
 
