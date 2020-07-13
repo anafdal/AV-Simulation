@@ -6,5 +6,8 @@ For example, when the vehicle stops before a stop sign, it will only stop for a 
  Stopping in front of a stoplight, will also cause the vehicle to behave in different ways as it depends on a different set of factors like which light is activated and if someone is passing through the crossroad. The vehicle is able to differentiate between these different scenarios by using raycasting. Through raycasting, the vehicle is informed on what object is ahead of it and what behaviour it should perform. The Navigation Mesh System is also utilized to guide the vehicles in their path and determine where they need to go next.
 
 In the end the project involves two main scenarios: user walking through a crossroad with a stop sign, and user walking through a stoplight intersection.
+Project is created with:
+* Unity: 2019.2.2f1
+
 
 So far this is an early prototype and work is still being done to develop the project further.
