@@ -1609,7 +1609,7 @@ GameObject:
   - component: {fileID: 177600702}
   - component: {fileID: 177600701}
   m_Layer: 0
-  m_Name: Green (1)
+  m_Name: 'Green '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7633,6 +7633,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6013911140094824090, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5663599
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911140036816797, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6028608
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911141159365548, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9108298
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911140076183477, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.33032
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911141148571685, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6396127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911141337186599, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4702998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013911141698248883, guid: 644b263e416180546bf44bc38979077a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3779618
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 644b263e416180546bf44bc38979077a, type: 3}
 --- !u!1 &785254214
@@ -8638,7 +8673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.2
+      value: 12.8
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8646,7 +8681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -815.7
+      value: -834.4
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8679,6 +8714,18 @@ PrefabInstance:
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.69363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65852
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.73868
       objectReference: {fileID: 0}
     - target: {fileID: 54587624234064098, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
@@ -8748,17 +8795,27 @@ PrefabInstance:
     - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
       propertyPath: canHoldJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
       propertyPath: jumpPower
-      value: 4.37
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
         type: 3}
       propertyPath: autoCrosshair
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
+        type: 3}
+      propertyPath: advanced.maxStepHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41,
+        type: 3}
+      propertyPath: advanced.gravityMultiplier
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 1129895495175522, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_Layer
@@ -9232,8 +9289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d065869cb5550ca4e95091453c18ece9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  first: {fileID: 1602489784}
-  second: {fileID: 1098730556}
+  first: {fileID: 1098730556}
+  second: {fileID: 1602489784}
   time: 20
   firstSpot: {fileID: 177600699}
   secondSpot: {fileID: 2004817799}
@@ -10858,7 +10915,7 @@ GameObject:
   - component: {fileID: 1248461411}
   - component: {fileID: 1248461410}
   m_Layer: 0
-  m_Name: Yellow (2)
+  m_Name: 'Yellow '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10950,7 +11007,7 @@ GameObject:
   - component: {fileID: 1273492053}
   - component: {fileID: 1273492052}
   m_Layer: 0
-  m_Name: Green (2)
+  m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11439,7 +11496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303627998}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 64.8, y: 31.5, z: -749.5}
+  m_LocalPosition: {x: 64.8, y: 29.8, z: -749.5}
   m_LocalScale: {x: 47.519886, y: 9.779516, z: 2.186703}
   m_Children: []
   m_Father: {fileID: 1084153264}
@@ -17791,7 +17848,7 @@ GameObject:
   - component: {fileID: 1937445002}
   - component: {fileID: 1937445001}
   m_Layer: 0
-  m_Name: Red (2)
+  m_Name: 'Red '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18548,7 +18605,7 @@ GameObject:
   - component: {fileID: 1985393404}
   - component: {fileID: 1985393403}
   m_Layer: 0
-  m_Name: Yellow (1)
+  m_Name: 'Yellow '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18732,7 +18789,7 @@ GameObject:
   - component: {fileID: 2004817802}
   - component: {fileID: 2004817801}
   m_Layer: 0
-  m_Name: Red (1)
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

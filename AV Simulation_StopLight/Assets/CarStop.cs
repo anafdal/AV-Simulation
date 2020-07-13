@@ -34,7 +34,7 @@ public class CarStop : MonoBehaviour
     {
         agent = agent.GetComponent<NavMeshAgent>();
 
-        
+        Cursor.visible = false;
     }
 
     void Update()

@@ -21,12 +21,25 @@ public class LightSwitch0 : MonoBehaviour
         second = second.GetComponent<Light>();
         first = first.GetComponent<Light>();
 
-        second.enabled = true;
-        first.enabled = false;
+        if (secondSpot.name == "Green")// stoplight A and D
+        {
+            second.enabled = true;
+            first.enabled = false;
 
-        yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
-        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
-        secondSpot.GetComponent<Renderer>().material.color = Color.red;
+            yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
+            firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+            secondSpot.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if(secondSpot.name == "Red")//stoplight C
+        {
+            second.enabled = false;
+            first.enabled = true;
+
+
+            yellowSpot.GetComponent<Renderer>().material.color = Color.gray;
+            firstSpot.GetComponent<Renderer>().material.color = Color.red;
+            secondSpot.GetComponent<Renderer>().material.color = Color.gray;
+        }
     }
 
     // Update is called once per frame
@@ -34,12 +47,12 @@ public class LightSwitch0 : MonoBehaviour
     {
         if (second.enabled == true && first.enabled == false)
         {
-            StartCoroutine(LightChange1());
+            StartCoroutine(LightChange1());//switch lights
 
         }
         else if (second.enabled == false && first.enabled == true)
         {
-            StartCoroutine(LightChange2());
+            StartCoroutine(LightChange2());//switch lights
 
         }
 
@@ -54,9 +67,12 @@ public class LightSwitch0 : MonoBehaviour
         second.enabled = false;
         first.enabled = true;
 
-        firstSpot.GetComponent<Renderer>().material.color = Color.red;
-        secondSpot.GetComponent<Renderer>().material.color = Color.gray;
-        //Debug.Log("Entefirst1");
+        
+            firstSpot.GetComponent<Renderer>().material.color = Color.red;
+            secondSpot.GetComponent<Renderer>().material.color = Color.gray;
+        
+      
+        
     }
 
 
@@ -69,8 +85,9 @@ public class LightSwitch0 : MonoBehaviour
         second.enabled = true;
         first.enabled = false;
 
-        firstSpot.GetComponent<Renderer>().material.color = Color.gray;
-        secondSpot.GetComponent<Renderer>().material.color = Color.green;
-        //Debug.Log("Entefirst2");
+          firstSpot.GetComponent<Renderer>().material.color = Color.gray;
+          secondSpot.GetComponent<Renderer>().material.color = Color.green;
+        
+      
     }
 }
