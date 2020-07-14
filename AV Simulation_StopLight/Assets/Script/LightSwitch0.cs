@@ -86,3 +86,4 @@ public class LightSwitch0 : MonoBehaviour
         //Debug.Log("Entefirst2");
     }
 }
+}
