@@ -20,6 +20,8 @@ public class IconDetect : MonoBehaviour
     private GameObject StripeR;//red stripe
 
     //runnning
+    private GameObject Image7;
+    private GameObject Image8;
     private GameObject StripeB;//blue stripe
 
     [HideInInspector]
@@ -47,7 +49,9 @@ public class IconDetect : MonoBehaviour
         Image6 = Detect.transform.GetChild(7).gameObject;
         StripeR= Detect.transform.GetChild(8).gameObject;
 
-        StripeB= Detect.transform.GetChild(9).gameObject;
+        Image7 = Detect.transform.GetChild(9).gameObject;
+        Image8 = Detect.transform.GetChild(10).gameObject;
+        StripeB = Detect.transform.GetChild(11).gameObject;
 
         Image1.SetActive(false);
         Image2.SetActive(false);
@@ -61,7 +65,9 @@ public class IconDetect : MonoBehaviour
         Image6.SetActive(false);
         StripeR.SetActive(false);
 
-        StripeB.SetActive(false);
+        Image7.SetActive(true);
+        Image8.SetActive(true);
+        StripeB.SetActive(true);
     }
 
     // Update is called once per frame
@@ -81,6 +87,9 @@ public class IconDetect : MonoBehaviour
             Image5.SetActive(false);
             Image6.SetActive(false);
             StripeR.SetActive(false);
+            Image7.SetActive(false);
+            Image8.SetActive(false);
+            StripeB.SetActive(false);
 
         }
         else if (imValue == 2)//stop
@@ -91,6 +100,9 @@ public class IconDetect : MonoBehaviour
             Image5.SetActive(false);
             Image6.SetActive(false);
             StripeR.SetActive(false);
+            Image7.SetActive(false);
+            Image8.SetActive(false);
+            StripeB.SetActive(false);
 
             Image3.SetActive(true);
             Image4.SetActive(true);
@@ -104,12 +116,15 @@ public class IconDetect : MonoBehaviour
             Image3.SetActive(false);
             Image4.SetActive(false);
             StripeG.SetActive(false);
+            Image7.SetActive(false);
+            Image8.SetActive(false);
+            StripeB.SetActive(false);
 
             Image5.SetActive(true);
             Image6.SetActive(true);
             StripeR.SetActive(true);
         }
-        else//deactivated
+        else//running
         {
             Image1.SetActive(false);
             Image2.SetActive(false);
@@ -122,6 +137,10 @@ public class IconDetect : MonoBehaviour
             Image5.SetActive(false);
             Image6.SetActive(false);
             StripeR.SetActive(false);
+
+            Image7.SetActive(true);
+            Image8.SetActive(true);
+            StripeB.SetActive(true);
         }
 
     }

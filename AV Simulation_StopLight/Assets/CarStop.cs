@@ -18,7 +18,7 @@ public class CarStop : MonoBehaviour
     public float stopDistance_Car = 45.0f;//distance to stop behind another
     public float stopDistance_Stop = 50.0f;//distance to stop behind stoplines or applied stoplights
     public float stopDistance_Person = 30.0f;//distance to stop behind person
-    private bool value1 = false;
+    private bool value2 = false;
 
 
 
@@ -34,8 +34,7 @@ public class CarStop : MonoBehaviour
     {
         agent = agent.GetComponent<NavMeshAgent>();
 
-        //test
-       // color = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+        Cursor.visible = false;
     }
 
     void Update()
@@ -62,7 +61,7 @@ public class CarStop : MonoBehaviour
                 Debug.DrawRay(origin, direction * maxDistance, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));//draw it out
                 //Debug.Log(agent.transform.name+" "+hit.transform.tag);
 
-                 if (hit.transform.tag == "Stop") {//might need to make separate value for each of this, where you separate each thing and stop tag
+                 if (hit.transform.tag == "Stop") {//for stop signs
 
                     stopdestination = hit.transform.GetChild(0).position;//position to use as a stop place
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance between objects
@@ -74,7 +73,7 @@ public class CarStop : MonoBehaviour
 
 
             }
-            else//good here
+            else
             {
 
 
@@ -84,9 +83,9 @@ public class CarStop : MonoBehaviour
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Stopping Procedure
 
 
-           
+
                //Debug.Log(Mathf.Sqrt(Vector3.Dot(agent.velocity, agent.velocity)));//use for Car 8
-            
+
 
             //Debug.Log(agent + "in " + stop);
 
@@ -110,24 +109,6 @@ public class CarStop : MonoBehaviour
 
                         agent.isStopped = true;
                         PedestrianCheck(trigger);
-
-                       /* //determine if there is person or not crossing
-                        if (Trigger1.needtoStop1 == true && hit.transform.name == "Stopline (2)(Stop)")//determine which stopline is it referring to if there is someone crossing
-                        {
-
-                            stoptime_Car1 = false;//stop at first stopline
-                                                  //Debug.Log("Here 2 " + stoptime_Car1);
-
-
-
-                        }
-                        else if (Trigger2.needtoStop2 == true && hit.transform.name == "Stopline (6)(Stop)")
-                        {
-
-                            stoptime_Car2 = false;//stop at second stopline
-                                                  //Debug.Log("Here 6" + stoptime_Car2);
-
-                        }*/
 
                     }
 
@@ -165,18 +146,23 @@ public class CarStop : MonoBehaviour
                     Light red = stoplight.transform.Find("red light").GetComponent<Light>();
                     Light green = stoplight.transform.Find("green light").GetComponent<Light>();
 
-
                     float distance = Vector3.Distance(transform.position, stopdestination);//calculate distance
-
-
 
 
                     if (red.enabled == true)//if red is on
                     {
-                        value1 = true;
-                        IconUi.ChangeIcon2(distance, red.enabled, value1, agent);//only if light is red
-                       //Debug.Log(agent.name+" :"+distance);
+                        value2 = true;
 
+                        if (agent.CompareTag("Car1"))
+                        {
+                            IconUi.ChangeIcon2(distance, red.enabled, value2, agent);//only if light is red
+                           //Debug.Log(agent.name+" :"+distance);
+                        }
+
+                        else if (agent.CompareTag("Car2"))//these cars will turn
+                        {
+                            IconUi.ChangeIcon(distance,agent);
+                        }
 
                         StopLightTurn(distance);
                        //Debug.Log(agent.name + " hit");
@@ -185,15 +171,18 @@ public class CarStop : MonoBehaviour
 
                     else if (green.enabled == true)//if green is on
                     {
-                        IconUi.StopIcon2(value1, agent);
+                         //value2=IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
 
                         CheckPedestrainCrossRoad(distance);
                     }
 
                 }
-                else if (hit.transform.tag == "Check")//prevent the agent froms stopping in the midddle of the crossroad if light turns red
+                else if (hit.CompareTag ("Check"))//prevent the agent froms stopping in the midddle of the crossroad if light turns red
                 {
-                   float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance
+                    IconUi.StopIcon(agent);//display only running icons
+
+
+                    float distance = Vector3.Distance(transform.position, hit.transform.position);//calculate distance
 
                     if (distance < 20)
                     {
@@ -203,7 +192,7 @@ public class CarStop : MonoBehaviour
 
 
 
-                    //Debug.Log(agent.name+": Hit");
+                  // Debug.Log(agent.name+": Hit");
                 }
 
 
@@ -252,19 +241,6 @@ public class CarStop : MonoBehaviour
 
     private void PedestrianCheck(GameObject trigger) {///checks if they is a person walking on the pedestrian walk at the stop sign
 
-        /* if (Trigger1.needtoStop1 == true)//determine which stopline is it referring to if there is someone crossing
-         {
-
-             stoptime_Car1 = false;//stop at first stopline
-                                   //Debug.Log("Here 2 " + stoptime_Car1);
-         }
-         else if (Trigger2.needtoStop2 == true)
-         {
-
-             stoptime_Car2 = false;//stop at second stopline
-                                   //Debug.Log("Here 6" + stoptime_Car2);
-
-         }*/
 
         if (trigger.GetComponent<Trigger1>().needtoStop1 == true)
         {
@@ -282,12 +258,7 @@ public class CarStop : MonoBehaviour
             StartCoroutine(CarCoroutine1(trigger));
 
         }
-       /* else if (Trigger2.needtoStop2 == false && hit.transform.name == "Stopline (6)(Stop)")
-        {
 
-            StartCoroutine(CarCoroutine2());
-
-        }*/
 
     }
 
@@ -316,31 +287,6 @@ public class CarStop : MonoBehaviour
 
     }
 
-   /* IEnumerator CarCoroutine2()//wait for ... seconds before car becomes active
-    {
-
-        if (stoptime_Car2 == false)
-        {
-            yield return new WaitForSeconds(1.0f);
-
-        }
-        else
-        {
-
-            yield return new WaitForSeconds(time);
-
-        }
-
-        if (Trigger2.needtoStop2 == true && agent.isStopped == true)//one last check
-        {
-            agent.isStopped = true;
-        }
-        else
-        {
-            agent.isStopped = false;
-        }
-
-    }*/
     ///////////////////////////////////////////////////////////////////////////////////////////////Stoplight
     private void StopLightTurn(float distance)///stoplight example
     {
@@ -367,19 +313,6 @@ public class CarStop : MonoBehaviour
                     CarRightTurnDecision();
 
                 }
-               /* else if(hit.name=="Stoplight C")////also have to be careful of cars
-                {
-                    agent.isStopped = true;
-
-                    if (TriggerA.needtoStop == true)
-                    {
-
-                        stoptime_Car4 = false;
-                        Debug.Log("here");
-
-                    }
-                    CarRightTurnDecision();
-                }*/
             }
             else
             {
@@ -404,10 +337,12 @@ public class CarStop : MonoBehaviour
 
                         agent.isStopped = true;//agent will not move
 
+
                     }
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
                 else if (hit.name == "Stoplight D")
@@ -419,6 +354,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
             }
@@ -437,6 +373,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
                 else if (hit.name == "Stoplight C")
@@ -448,6 +385,7 @@ public class CarStop : MonoBehaviour
                     else
                     {
                         agent.isStopped = false;//agent will move
+                        value2 = IconUi.StopIcon2(value2, agent);//only if agent has already been stopped by red light previously
                     }
                 }
 
