@@ -32,7 +32,13 @@ public class DetectCarAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //Find the closest car
+      // Find the closest car
+      foreach(Transform t in Cars.transform){
+        if(t.gameObject.layer == 9) //layer 9 is Car
+        CarList.Add(t.gameObject);
+
+      }
+      Debug.Log(CarList);
       // CarList = GetObjectsInLayer(Cars, 9);
 
       //Check the closest car within radius of 0.5 unit
@@ -54,7 +60,8 @@ public class DetectCarAudio : MonoBehaviour
 
     }
     */
-    // private static List<GameObject> GetObjectsInLayer(GameObject root, int layer)
+
+    // private void List<GameObject> GetObjectsInLayer(GameObject root, int layer)
     // {
     //     var ret = new List<GameObject>();
     //     foreach (Transform t in root.transform.GetComponentsInChildren(typeof(GameObject), true))
@@ -64,6 +71,6 @@ public class DetectCarAudio : MonoBehaviour
     //             ret.Add (t.gameObject);
     //         }
     //     }
-    //     return ret;
+    //
     // }
 }
