@@ -22,29 +22,40 @@ public class DetectCarAudio : MonoBehaviour
 
     List<GameObject> CarList;
 
-
+    float ClosestDis;
     // Start is called before the first frame update
     void Start()
     {
+      CarList = new List<GameObject>();
+
+      foreach(Transform t in Cars.transform){
+        if(t.gameObject.layer == 9) //layer 9 is Car
+        CarList.Add(t.gameObject);
+      }
+
+      ClosestCar = CarList[0];
+      ClosestDis = Vector3.Distance(transform.position, ClosestCar.transform.position);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      // Find the closest car
-      foreach(Transform t in Cars.transform){
-        if(t.gameObject.layer == 9) //layer 9 is Car
-        CarList.Add(t.gameObject);
-
-      }
-      Debug.Log(CarList);
-      // CarList = GetObjectsInLayer(Cars, 9);
 
       //Check the closest car within radius of 0.5 unit
+      foreach(GameObject car in CarList){
+          float Dis = Vector3.Distance(transform.position, car.transform.position);
+          if (Dis < ClosestDis){
+            ClosestDis = Dis;
+            ClosestCar = car;
+          }
+      }
 
-
-
+      if(ClosestDis < 120.0f && ClosestDis > 119.0f){
+        Debug.Log(ClosestCar.gameObject.name);
+        Debug.Log(ClosestDis);
+        audioSource.PlayOneShot(CarApproach, Volume);
+      }
 
 
       //Testing
@@ -61,16 +72,4 @@ public class DetectCarAudio : MonoBehaviour
     }
     */
 
-    // private void List<GameObject> GetObjectsInLayer(GameObject root, int layer)
-    // {
-    //     var ret = new List<GameObject>();
-    //     foreach (Transform t in root.transform.GetComponentsInChildren(typeof(GameObject), true))
-    //     {
-    //         if (t.gameObject.layer == layer)
-    //         {
-    //             ret.Add (t.gameObject);
-    //         }
-    //     }
-    //
-    // }
 }
