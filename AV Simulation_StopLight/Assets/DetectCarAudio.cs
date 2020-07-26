@@ -11,9 +11,9 @@ public class DetectCarAudio : MonoBehaviour
 
     public AudioClip CarApproach;
     public AudioClip AboutToRestart;
-    public AudioClip FullyStopCross;
-    public AudioClip YieldingCrossNow;
-    public AudioClip RestartingMove;
+    public AudioClip FullyStop;
+    // public AudioClip YieldingCrossNow;
+    // public AudioClip RestartingMove;
 
     public float Volume = 0.7f;
 
@@ -23,6 +23,7 @@ public class DetectCarAudio : MonoBehaviour
     List<GameObject> CarList;
 
     float ClosestDis;
+    float timeCount = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,34 +43,55 @@ public class DetectCarAudio : MonoBehaviour
     void Update()
     {
 
-      //Check the closest car within radius of 0.5 unit
-      foreach(GameObject car in CarList){
-          float Dis = Vector3.Distance(transform.position, car.transform.position);
-          if (Dis < ClosestDis){
-            ClosestDis = Dis;
-            ClosestCar = car;
+      // //Check the closest car within certain distance
+      // foreach(GameObject car in CarList){
+      //     float Dis = Vector3.Distance(transform.position, car.transform.position);
+      //     if (Dis < ClosestDis){
+      //       ClosestDis = Dis;
+      //       ClosestCar = car;
+      //     }
+      // }
+      // // Debug.Log(ClosestCar.gameObject.name);
+      //
+      // if(ClosestDis < 120.0f && ClosestDis > 119.0f){
+      //   Debug.Log(ClosestCar.gameObject.name);
+      //   Debug.Log(ClosestDis);
+      //   audioSource.PlayOneShot(CarApproach, Volume);
+      // }
+
+      //make sure each audio trigger has gap at least 3 seconds - avoid voice overlapping
+      timeCount += Time.deltaTime;
+
+
+    }
+
+    public void PlayAudio(string command){
+      switch(command){
+        case "CarApproach":
+          if(timeCount>=3.0f)
+          {
+            audioSource.PlayOneShot(CarApproach, Volume);
+            timeCount = 0f;
           }
+          break;
+        case "FullyStop":
+          if(timeCount>=3.0f)
+          {
+            audioSource.PlayOneShot(FullyStop, Volume);
+            timeCount = 0f;
+          }
+          break;
+        case "AboutToRestart":
+          if(timeCount>=3.0f)
+          {
+            audioSource.PlayOneShot(AboutToRestart, Volume);
+            timeCount = 0f;
+          }
+          break;
+        default:
+          break;
       }
-
-      if(ClosestDis < 120.0f && ClosestDis > 119.0f){
-        Debug.Log(ClosestCar.gameObject.name);
-        Debug.Log(ClosestDis);
-        audioSource.PlayOneShot(CarApproach, Volume);
-      }
-
-
-      //Testing
-      if(Input.GetKey("k")){
-        audioSource.PlayOneShot(CarApproach, Volume);
-        Debug.Log("Press");
-      }
+      // audioSource.PlayOneShot(CarApproach, Volume);
     }
-    /*
-    void OnCollisionEnter(Collision c){
-      if(c.gameObject.layer == 9) // Layer 9 is Car
-      audioSource.PlayOneShot(CarApproach, Volume);
-
-    }
-    */
 
 }

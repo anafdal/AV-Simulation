@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class CarStop : MonoBehaviour
 {//found in car(..)
 
+    private GameObject Player;
+
     public NavMeshAgent agent;
     private Vector3 stopdestination;//original destination/target
     private bool stoptime_Car1 = true;//needed so car doesnt have to wait right after person has moved the crosswalk
@@ -20,8 +22,6 @@ public class CarStop : MonoBehaviour
     public float stopDistance_Person = 30.0f;//distance to stop behind person
     private bool value2 = false;
 
-
-
     //raycast
     [SerializeField]
     private LayerMask layerMask = new LayerMask();
@@ -32,8 +32,8 @@ public class CarStop : MonoBehaviour
 
     void Start()
     {
+        Player = GameObject.Find("FirstPerson-AIO");
         agent = agent.GetComponent<NavMeshAgent>();
-
         Cursor.visible = false;
     }
 
@@ -103,9 +103,6 @@ public class CarStop : MonoBehaviour
                     //stopping
                     if (distance < stopDistance_Stop)
                     {//if no one is crossing, continue usual routine
-
-
-
 
                         agent.isStopped = true;
                         PedestrianCheck(trigger);
@@ -232,6 +229,7 @@ public class CarStop : MonoBehaviour
         }
         else
         {
+          //add Audio
             agent.SetDestination(agent.steeringTarget);//once car in front moves, resume path
             agent.isStopped = false;
         }
@@ -239,13 +237,14 @@ public class CarStop : MonoBehaviour
 
     }
 
-    private void PedestrianCheck(GameObject trigger) {///checks if they is a person walking on the pedestrian walk at the stop sign
-
+    private void PedestrianCheck(GameObject trigger) {///checks if there is a person walking on the pedestrian walk at the stop sign
 
         if (trigger.GetComponent<Trigger1>().needtoStop1 == true)
         {
+            // Player.GetComponent<DetectCarAudio>().PlayAudio("CarApproach");
             stoptime_Car1 = false;
         }
+
 
 
     }
@@ -255,7 +254,10 @@ public class CarStop : MonoBehaviour
         //restarting
         if (trigger.GetComponent<Trigger1>().needtoStop1 == false)
         {
-            StartCoroutine(CarCoroutine1(trigger));
+          //add Audio "car restarting"
+          // Player.GetComponent<DetectCarAudio>().PlayAudio("AboutToRestart");
+
+          StartCoroutine(CarCoroutine1(trigger));
 
         }
 

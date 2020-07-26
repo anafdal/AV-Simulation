@@ -29,10 +29,11 @@ public class IconDetect : MonoBehaviour
 
 
     private GameObject Detect;//the images are held here
-    
-  
+    private GameObject Player;
+
     private void Start()
     {
+        Player = GameObject.Find("FirstPerson-AIO");
         imValue = 0;
 
         Detect = this.transform.Find("Detect ").gameObject;
@@ -73,7 +74,7 @@ public class IconDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
 
         if (imValue == 1)//detect
         {
@@ -90,7 +91,8 @@ public class IconDetect : MonoBehaviour
             Image7.SetActive(false);
             Image8.SetActive(false);
             StripeB.SetActive(false);
-
+            // audio: I'm Approaching
+            Player.GetComponent<DetectCarAudio>().PlayAudio("CarApproach");
         }
         else if (imValue == 2)//stop
         {
@@ -107,6 +109,9 @@ public class IconDetect : MonoBehaviour
             Image3.SetActive(true);
             Image4.SetActive(true);
             StripeG.SetActive(true);
+
+            // audio: I'm fully stopped
+            Player.GetComponent<DetectCarAudio>().PlayAudio("FullyStop");
         }
         else if (imValue == 3)//restart
         {
@@ -123,6 +128,9 @@ public class IconDetect : MonoBehaviour
             Image5.SetActive(true);
             Image6.SetActive(true);
             StripeR.SetActive(true);
+
+            // audio: I'm restarting
+            Player.GetComponent<DetectCarAudio>().PlayAudio("AboutToRestart");
         }
         else//running
         {
@@ -145,4 +153,3 @@ public class IconDetect : MonoBehaviour
 
     }
 }
-
