@@ -7,7 +7,7 @@
 
 
 ## General info
-Autonomous vehicles (AV) is a merging theme for the advent era of future transportation.  In design, AVs are able to effectively assist humans in everyday tasks. However, one challenge prevents pedestrian-AV interactions research is that there are no public and standardized benchmarks to investigate different manners of interactions to communicate AVs’awareness and intent to pedestrians. To address the existing limitation, this proposed work aims to include general interactive interfaces on AV and introduce the VR-PAVIB benchmark for researchers to investigate the impact of different interface features on pedestrians’ perception of the AV behavior on the road.
+Autonomous vehicles (AV) is a merging theme for the advent era of future transportation.  In design, AVs are able to effectively assist humans in everyday tasks. However, one challenge prevents pedestrian-AV interactions research is that there are no public and standardized benchmarks to investigate different manners of interactions to communicate AVs’awareness and intent to pedestrians. To address the existing limitation, this proposed work aims to include general interactive interfaces on AV and introduce the VR-PAVIB benchmark for researchers to investigate the impact of different interface features on pedestrians’ perception of the AV behavior on the road. Paper published on the [AutomotiveUI '20: 12th International Conference on Automotive User Interfaces and Interactive Vehicular Applications, 2020](https://dl.acm.org/doi/10.1145/3409251.3411718).
 
 
 ## Setup
